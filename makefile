@@ -1,9 +1,13 @@
-.POSIX:
-
 SOURCE = $(wildcard src/*.md)
 OBJECTS = $(SOURCE:.md=.html)
-all: $(OBJECTS)
-deploy: all
+
+.POSIX:
+
+.DEFAULT: build
+
+build: $(OBJECTS)
+
+deploy: build
 	@rm -rf deploy;\
 		DEPLOT_GIT_BRANCH=gh-pages;\
 		DEPLOY_GIT_REMOTE=$$(git remote);\
@@ -20,6 +24,15 @@ deploy: all
 		git push $$DEPLOY_GIT_REMOTE $$DEPLOT_GIT_BRANCH;
 	@echo "Deployed";
 
-%.html: %.md
-	mkdir -p build; awk -f awk/markdown.awk $< > build/$(<F:.md=.html)
+test: build
+	open build/index.html
+
+build_dir:
+	mkdir -p build
+
+%.html: %.md build_dir
+	@vars="$$(awk -f awk/lib.awk -f awk/vars.awk $< | awk -F '=' '{gsub("\"", "\\\"", $$2); print $$1 "=" "\"" $$2 "\"" }')";\
+	awk -f awk/lib.awk -f awk/markdown.awk $< > build/$(<F:.md=.html);\
+	# echo $$vars >> build/$(<F:.md=.html);
+
 

@@ -1,3 +1,14 @@
-# My blog
-has some links [hello](./hello.html) and [test](./test.html)
-some other test
+// date: Wed Dec  4 00:52:29 CET 2019
+
+# odrzutowiec/blog
+Hello welcome to my blog.
+
+#### Hello world - Wed Dec  4 00:49:05 CET 2019
+This is the first entry. I made today significant progress with my blog tech.
+
+* `make deploy` prepares a new `gh-pages` branch commit and pushes it to github
+* `awk/lib.awk` will be a common place for all shared awk functions
+* `make build` supports now parsing markdown meta variables (disabled until useful)
+* `make test` runs `make build` and automatically opens the browser. Super convenient especially when running `:!make test` in vim.
+
+I'm very happy with this but it's 1am and I really need to get some rest.

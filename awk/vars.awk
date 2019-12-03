@@ -1,7 +1,3 @@
-function trim(s) {
-    return sub(/[ \t\r\n]+$/, "", sub(/^[ \t\r\n]+/, "", s))
-}
-
 BEGIN {
     mode = "normal"
 }

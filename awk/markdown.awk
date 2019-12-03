@@ -132,7 +132,7 @@ BEGIN {
 
 # text
 // {
-    text = text $0;
+    text = text " " $0;
 }
 
 END {

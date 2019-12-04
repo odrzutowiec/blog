@@ -7,7 +7,7 @@ OBJECTS = $(SOURCE:.md=.html)
 
 build: $(OBJECTS)
 
-deploy: build
+deploy: $(OBJECTS:src=deploy)
 	@rm -rf deploy;\
 		DEPLOT_GIT_BRANCH=gh-pages;\
 		DEPLOY_GIT_REMOTE=$$(git remote);\
@@ -18,6 +18,7 @@ deploy: build
 		git remote add $$DEPLOY_GIT_REMOTE $$DEPLOY_GIT_URL;\
 		git checkout -b $$DEPLOT_GIT_BRANCH;\
 		git pull $$DEPLOY_GIT_REMOTE $$DEPLOT_GIT_BRANCH;\
+		rm -rf *;\
 		cp -r ../build/* .;\
 		git add .;\
 		git commit -m "$$(date)";\
@@ -29,6 +30,7 @@ test: build
 
 build_dir:
 	mkdir -p build
+	rm -rf build/*
 
 %.html: %.md build_dir
 	@vars="$$(awk -f awk/lib.awk -f awk/vars.awk $< | awk -F '=' '{gsub("\"", "\\\"", $$2); print $$1 "=" "\"" $$2 "\"" }')";\

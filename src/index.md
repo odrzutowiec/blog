@@ -12,3 +12,6 @@ This is the first entry. I made today significant progress with my blog tech.
 * `make test` runs `make build` and automatically opens the browser. Super convenient especially when running `:!make test` in vim.
 
 I'm very happy with this but it's 1am and I really need to get some rest.
+
+#### Wed Dec  4 23:49:47 CET 2019
+No time for updates. That unfortunately means no serious progress in the blog tech. I only improved the `make deploy` so that it commit file delete changes. It had a bug where it would commit previous file again even if it was deleted in the new version.

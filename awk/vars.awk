@@ -16,5 +16,8 @@ mode=="meta" && /^\/\// {
 }
 
 END {
-    for (x in meta_vars) print x "=" meta_vars[x]
+    for (x in meta_vars) {
+        gsub("\"", "\\\"", meta_vars[x])
+        print x "=" "\\\"" meta_vars[x] "\\\""
+    }
 }

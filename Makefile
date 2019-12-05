@@ -32,9 +32,12 @@ build_dir:
 	mkdir -p build
 	rm -rf build/*
 
+# Compile html files from markdownfiles.
+# First parse all markdown files for meta variables with format // name: val by using vars.awk
+# TODO: then pass those meta variables to the makrdown.awk
+
 %.html: %.md build_dir
-	@vars="$$(awk -f awk/lib.awk -f awk/vars.awk $< | awk -F '=' '{gsub("\"", "\\\"", $$2); print $$1 "=" "\"" $$2 "\"" }')";\
-	awk -f awk/lib.awk -f awk/markdown.awk $< > build/$(<F:.md=.html);\
-	# echo $$vars >> build/$(<F:.md=.html);
+	@vars="$$(awk -f awk/lib.awk -f awk/vars.awk $<)"; \
+		echo "$$vars" | sed 's/"/"/g;s/^/-v /'  | xargs -t -I vars awk vars -f awk/lib.awk -f awk/markdown.awk $< > build/$(<F:.md=.html);
 
 

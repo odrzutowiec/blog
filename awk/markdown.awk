@@ -1,6 +1,7 @@
 BEGIN {
     env = "none";
     text = "";
+    print date "HAHAHAHAH";
 }
 
 # comments

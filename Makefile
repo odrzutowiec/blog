@@ -37,8 +37,8 @@ build_dir:
 # TODO: then pass those meta variables to the makrdown.awk
 
 %.html: %.md build_dir
-	@vars="$$(awk -f awk/lib.awk -f awk/vars.awk $<)"; \
-		echo "\'$$vars\'" | sed 's/"/"/g;s/^/-v /' | xargs echo | xargs -E ' ' -t -I vars awk -f awk/lib.awk -f awk/markdown.awk $< > build/$(<F:.md=.html);
+	@vars="$$(awk -f awk/lib.awk -f awk/vars.awk $< | sed "s/^/-v /" | paste -sd ' ' -)"; \
+		eval awk $$vars -f awk/lib.awk -f awk/markdown.awk $< > build/$(<F:.md=.html);
 
 clean:
 	rm -rf build;

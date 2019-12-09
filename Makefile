@@ -38,6 +38,9 @@ build_dir:
 
 %.html: %.md build_dir
 	@vars="$$(awk -f awk/lib.awk -f awk/vars.awk $<)"; \
-		echo "$$vars" | sed 's/"/"/g;s/^/-v /'  | xargs -t -I vars awk vars -f awk/lib.awk -f awk/markdown.awk $< > build/$(<F:.md=.html);
+		echo "\'$$vars\'" | sed 's/"/"/g;s/^/-v /' | xargs echo | xargs -E ' ' -t -I vars awk -f awk/lib.awk -f awk/markdown.awk $< > build/$(<F:.md=.html);
 
+clean:
+	rm -rf build;
+	rm -rf deploy;
 

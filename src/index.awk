@@ -5,7 +5,7 @@ BEGIN {
         posts++
     }
     for (i=0;i<posts;i++) {
-        contents = contents "\n" read("head src/posts/" files[i])
+        contents = contents "\n" read("cat src/posts/" files[i])
     }
     print contents
 }

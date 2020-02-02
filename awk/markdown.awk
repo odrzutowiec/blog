@@ -55,14 +55,14 @@ BEGIN {
 }
 
 # emphesis
-/_/ {
+/ _/ {
     while (match($0, /_/) != 0) {
         if (env == "em") {
             sub(/_/, "</em>");
             env = peenv;
         }
         else {
-            sub(/_/, "<em>");
+            sub(/ _/, " <em>");
             peenv = env;
             env = "em";
         }

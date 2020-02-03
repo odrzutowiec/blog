@@ -7,5 +7,7 @@ BEGIN {
     for (i=0;i<posts;i++) {
         contents = contents "\n" read("cat src/posts/" files[i])
     }
-    print contents
+    template = read("cat src/template.html")
+    sub("{{contents}}", contents, template)
+    print template
 }

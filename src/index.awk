@@ -1,6 +1,6 @@
 BEGIN {
     posts = 0
-    while ("ls -m -1 src/posts" | getline file) {
+    while ("ls -m -1 src/posts | sort -h -r" | getline file) {
         files[posts] = file
         posts++
     }

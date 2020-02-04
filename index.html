@@ -1,3 +1,51 @@
+<p> <html>   <head>     <style>       body {         width: 30em;         line-height: 1.5em;         margin: auto;       }     </style>     <title>Odrzutowiec Blog</title>   </head>   <body></p>
+
+<h4>Tue Feb  4 00:58:57 CET 2020</h4>
+
+<p> Another quick update. I just felt inspired and decided to add html template to my blog so I can make shorter lines and longer line spacing. Looks much better now! Also fixed the post ordering so post 10 doesn't show immidiately after post 1 but rather after post 1. And reversed the order so the latest post is at the top.</p>
+
+<p> P.S. still worknig on that entry about spatial partitioning.</p>
+
+<h4>Sun Feb  2 11:15:42 CET 2020</h4>
+
+<p> A quick update. I'm currently ill with the seasonal virus and flu and have a bit more time. I've made small updates to my blog engine (fixed entry length to from 15 lines to infinite and improved handling of <code>_emphasis_</code> text). Since few days I'm working on a longer post about infinite game worlds and space partitioning, it should be out next week. Meantime something else I feel I need to share.</p>
+
+<p> Yesterday I've discovered a fascinating and profound talk by Alan Kay https://www.youtube.com/watch?v=j9ZGFaIHegE. (Here is the pre-read https://internetat50.com/references/Kay_How.pdf.) Alan Kay has been working in ARPA and Xerox research facilities and had a lot to do with invention of only such small technologies as personal computers, graphical user interfaces, object oriented programing and the internet. If Alan Turing is the Newton of Computer Science, Alan Kay is the Einstein (he also looks like one in the video). It's amazing how profound that talk is. Every single minute hits home and has deep meaning. It almost feel like everything I've been studying over the last year has been in preparation to receive this talk. Whenever I feel I learn something profound and deeply meaningful I feel pleasurable feeling of excitement, a wave of tingling passes through my body. This was definitely one of those times. It could be the confirmation bias, but it felt great to know that my instinctive curiosity is leading me to the areas such great minds as Alan Kay are dwelling.</p>
+
+<h4>Paying And Incuring Debts - Tue Jan 14 19:44:18 CET 2020</h4>
+
+<p> My hackathon project turned out to be a grand success and turned out exactly the way I anticipated. Actually no, it surprised me how fast things have started moving and how far the cascading effects reached into areas I did not at all had foreseen in the most wonderful way. I believe my work has brought joy and promise of better future to many people, including myself. Currently I'm again resting from deeper dives into technology. I'll need to pay my debt and follow up on that hackathon migration success with similar successes for many other features in our monolith application. I've been whining all year about what I wanted. Now I got it and it's time to shut up and pay back the favour.</p>
+
+<p> I'm using the downtime to decompress, refocus more on my personal mental and physical wellness. "Health" would have sounded wrong here since I do consider myself quite healthy at the moment, certainly not any less healthy then an average person of my circumstances. I focused on eating less and better things, I'm shyly trying my way back to some exercising and spending more time reading Nassim Taleb and Nietzsche. I also rediscovered the amazing joy of doing something selfless. Indeed Taleb is right about the Skin In The Game. But having skin in the game for a selfless cause feels almost ubermensch-ish... It definitely let me straighten up my back, rise my head and feel like I have right to be on this planet. But again it's critical I follow this promise of selflessness through and pay the debts. Not because how others see me. Because how I see myself.</p>
+
+<p> PS. I noticed my posts are getting longer and less frequent. That was not the initial intention for this blog. I wanted to keep it more as a research log. I'll observe how it evolves for a while and then decide what to do about it.</p>
+
+<h4>Sun Dec 22 21:46:17 CET 2019</h4>
+
+<p> Recently I've been thinking more about computer graphics. Specifically about the 3D projection matrix and the occlusion culling techniques (based on BSP and octrees). I just found this awesome website with exhaustive and well explained 3D fundamentals https://www.scratchapixel.com/ (no occlusion culling though). </p>
+
+<p> Did I mention I'd love to make a living owning a bike repair shop while making indie games? I don't have a thing for bikes, but they represent to me a different, slower kind of life. I'm 28 and even though I get bored with games much faster now and usually have enough after a one hour play session I still have in me 2 consecutive three hour play sessions every now and then. Not to mention how much actual time I spend consuming gaming content on youtube and the web (I should read more https://www.gamasutra.com/ though). I believe games are my biggest passion in life. There is something about the immersive escapism and world building that truly appeals to me.</p>
+
+<h4>Sun Dec 15 20:33:26 CET 2019</h4>
+
+<p> I've been busy with the hackathon held by my employer for the last few days so I couldn't really spend any time on personal projects. I managed to prepare PoC that it is possible to separate one of the major functionalities in our project into a separate project. This will decouple two teams and let each team has their own repository. I don't think I have to explain how far reaching positive effects this may have. It's a big win for me, my team, the other team and company in general. I hope I can follow up on this project afterwards and make the PoC into reality. Anyhow I feel pretty tired and bored with programming at the moment. Especially writing POSIX compliant scripts using sh, find, grep, sed and awk is quite difficult. I find POSIX versions of those utilities are really bare bones and often lack quality of life features. You can usually substitute those lacking features with just more scripts but in the heat of the moment like during a hackathon this can mean life or death. I imagine if I'd strictly stick with POSIX I'd build up a library of those convenience functions, but it will take time.</p>
+
+<h4>Tue Dec 10 23:31:16 CET 2019</h4>
+
+<p> I added awk pages to the blog. Right now this page is generated from multiple .md files concatonated by one <code>index.awk</code> file and all of it outputs as single <code>index.md</code>. I also added simple templating system.</p>
+
+<h4>Mon Dec  9 22:39:51 CET 2019</h4>
+
+<p> I've solve it! I have now variables working in blog tech. Apparently my problem was that xargs was treating everything as one big argument instead of few separate arguments separated -v. I think internally xargs is not calling shell but rather forks the program directly and passes arguments to it via the c interface. That would explain why the command that was generated by <code>xargs -t</code> was working correctly when manually copied and pasted into the terminal but would fail when run via xargs/make. Anyway next problem to solve in blog tech is start dynamically replace variable names from .md files into their values that were passed as arugments to awk script.</p>
+
+<h4>Mon Dec  9 19:49:35 CET 2019</h4>
+
+<p> I'm a little tired of <code>make</code> and <code>awk</code> at the moment so I decided to switch projects for a while. I have the template variables feature pretty much working except that for some reason when running <code>awk</code> via <code>make</code> it errors with <code>awk: invalid -v option</code> but that same exact command when run manually by pasting it in the terminal work sperfectly fine. I've recently heard that the "health" niche is evergreen on mobile. For the last year on and off I've been working on week organiser algorithm I named GYST. I'll brush up on this project. Update all the dependencies and see if I can make some progress. Last time I stopped at having simple D3 visualisation for my genetic algorithm since I needed to understand better why doesn't my algorithm work.</p>
+
+<h4>Wed Dec  4 23:49:47 CET 2019</h4>
+
+<p> No time for updates. That unfortunately means no serious progress in the blog tech. I only improved the <code>make deploy</code> so that it commit file delete changes. It had a bug where it would commit previous file again even if it was deleted in the new version.</p>
+
 <h4>Hello world - Wed Dec  4 00:49:05 CET 2019</h4>
 
 <p> This is the first entry. I made today significant progress with my blog tech.</p>
@@ -9,45 +57,5 @@
 <li><code>make test</code> runs <code>make build</code> and automatically opens the browser. Super convenient especially when running <code>:!make test</code> in vim.</li>
 </ul>
 
-<p> I'm very happy with this but it's 1am and I really need to get some rest.</p>
-
-<h4>Wed Dec  4 23:49:47 CET 2019</h4>
-
-<p> No time for updates. That unfortunately means no serious progress in the blog tech. I only improved the <code>make deploy</code> so that it commit file delete changes. It had a bug where it would commit previous file again even if it was deleted in the new version.</p>
-
-<h4>Mon Dec  9 19:49:35 CET 2019</h4>
-
-<p> I'm a little tired of <code>make</code> and <code>awk</code> at the moment so I decided to switch projects for a while. I have the template variables feature pretty much working except that for some reason when running <code>awk</code> via <code>make</code> it errors with <code>awk: invalid -v option</code> but that same exact command when run manually by pasting it in the terminal work sperfectly fine. I've recently heard that the "health" niche is evergreen on mobile. For the last year on and off I've been working on week organiser algorithm I named GYST. I'll brush up on this project. Update all the dependencies and see if I can make some progress. Last time I stopped at having simple D3 visualisation for my genetic algorithm since I needed to understand better why doesn't my algorithm work.</p>
-
-<h4>Mon Dec  9 22:39:51 CET 2019</h4>
-
-<p> I've solve it! I have now variables working in blog tech. Apparently my problem was that xargs was treating everything as one big argument instead of few separate arguments separated -v. I think internally xargs is not calling shell but rather forks the program directly and passes arguments to it via the c interface. That would explain why the command that was generated by <code>xargs -t</code> was working correctly when manually copied and pasted into the terminal but would fail when run via xargs/make. Anyway next problem to solve in blog tech is start dynamically replace variable names from .md files into their values that were passed as arugments to awk script.</p>
-
-<h4>Tue Dec 10 23:31:16 CET 2019</h4>
-
-<p> I added awk pages to the blog. Right now this page is generated from multiple .md files concatonated by one <code>index.awk</code> file and all of it outputs as single <code>index.md</code>. I also added simple templating system.</p>
-
-<h4>Sun Dec 15 20:33:26 CET 2019</h4>
-
-<p> I've been busy with the hackathon held by my employer for the last few days so I couldn't really spend any time on personal projects. I managed to prepare PoC that it is possible to separate one of the major functionalities in our project into a separate project. This will decouple two teams and let each team has their own repository. I don't think I have to explain how far reaching positive effects this may have. It's a big win for me, my team, the other team and company in general. I hope I can follow up on this project afterwards and make the PoC into reality. Anyhow I feel pretty tired and bored with programming at the moment. Especially writing POSIX compliant scripts using sh, find, grep, sed and awk is quite difficult. I find POSIX versions of those utilities are really bare bones and often lack quality of life features. You can usually substitute those lacking features with just more scripts but in the heat of the moment like during a hackathon this can mean life or death. I imagine if I'd strictly stick with POSIX I'd build up a library of those convenience functions, but it will take time.</p>
-
-<h4>Sun Dec 22 21:46:17 CET 2019</h4>
-
-<p> Recently I've been thinking more about computer graphics. Specifically about the 3D projection matrix and the occlusion culling techniques (based on BSP and octrees). I just found this awesome website with exhaustive and well explained 3D fundamentals https://www.scratchapixel.com/ (no occlusion culling though). </p>
-
-<p> Did I mention I'd love to make a living owning a bike repair shop while making indie games? I don't have a thing for bikes, but they represent to me a different, slower kind of life. I'm 28 and even though I get bored with games much faster now and usually have enough after a one hour play session I still have in me 2 consecutive three hour play sessions every now and then. Not to mention how much actual time I spend consuming gaming content on youtube and the web (I should read more https://www.gamasutra.com/ though). I believe games are my biggest passion in life. There is something about the immersive escapism and world building that truly appeals to me.</p>
-
-<h4>Paying And Incuring Debts - Tue Jan 14 19:44:18 CET 2020</h4>
-
-<p> My hackathon project turned out to be a grand success and turned out exactly the way I anticipated. Actually no, it surprised me how fast things have started moving and how far the cascading effects reached into areas I did not at all had foreseen in the most wonderful way. I believe my work has brought joy and promise of better future to many people, including myself. Currently I'm again resting from deeper dives into technology. I'll need to pay my debt and follow up on that hackathon migration success with similar successes for many other features in our monolith application. I've been whining all year about what I wanted. Now I got it and it's time to shut up and pay back the favour.</p>
-
-<p> I'm using the downtime to decompress, refocus more on my personal mental and physical wellness. "Health" would have sounded wrong here since I do consider myself quite healthy at the moment, certainly not any less healthy then an average person of my circumstances. I focused on eating less and better things, I'm shyly trying my way back to some exercising and spending more time reading Nassim Taleb and Nietzsche. I also rediscovered the amazing joy of doing something selfless. Indeed Taleb is right about the Skin In The Game. But having skin in the game for a selfless cause feels almost ubermensch-ish... It definitely let me straighten up my back, rise my head and feel like I have right to be on this planet. But again it's critical I follow this promise of selflessness through and pay the debts. Not because how others see me. Because how I see myself.</p>
-
-<p> PS. I noticed my posts are getting longer and less frequent. That was not the initial intention for this blog. I wanted to keep it more as a research log. I'll observe how it evolves for a while and then decide what to do about it.</p>
-
-<h4>Sun Feb  2 11:15:42 CET 2020</h4>
-
-<p> A quick update. I'm currently ill with the seasonal virus and flu and have a bit more time. I've made small updates to my blog engine (fixed entry length to from 15 lines to infinite and improved handling of <code>_emphasis_</code> text). Since few days I'm working on a longer post about infinite game worlds and space partitioning, it should be out next week. Meantime something else I feel I need to share.</p>
-
-<p> Yesterday I've discovered a fascinating and profound talk by Alan Kay https://www.youtube.com/watch?v=j9ZGFaIHegE. (Here is the pre-read https://internetat50.com/references/Kay_How.pdf.) Alan Kay has been working in ARPA and Xerox research facilities and had a lot to do with invention of only such small technologies as personal computers, graphical user interfaces, object oriented programing and the internet. If Alan Turing is the Newton of Computer Science, Alan Kay is the Einstein (he also looks like one in the video). It's amazing how profound that talk is. Every single minute hits home and has deep meaning. It almost feel like everything I've been studying over the last year has been in preparation to receive this talk. Whenever I feel I learn something profound and deeply meaningful I feel pleasurable feeling of excitement, a wave of tingling passes through my body. This was definitely one of those times. It could be the confirmation bias, but it felt great to know that my instinctive curiosity is leading me to the areas such great minds as Alan Kay are dwelling.</p>
+<p> I'm very happy with this but it's 1am and I really need to get some rest.   </body> </html></p>
 

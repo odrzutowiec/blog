@@ -1,5 +1,59 @@
 <p> <html>   <head>     <meta name="viewport" content="width=device-width, initial-scale=1.0">     <style>       * {         box-sizing: border-box;       }       body {         width: 30em;         margin: auto;         font-size: 22px;         line-height: 1.5em;         overflow-wrap: break-word;         word-wrap: break-word;         hyphens: auto;       }       @media (max-width: 704px) {         body {           padding: 0 1em;           width: 100%;         }       }     </style>     <title>Odrzutowiec Blog</title>   </head>   <body></p>
 
+<h4>Space Partitioning - Sun Feb 16 10:03:46 CET 2020</h4>
+
+<p> I've been thinking a bit more recently about infinite game worlds and roguelike games. I found a very interesting free book http://gameprogrammingpatterns.com/. It has a chapter about spatial partitioning which is exactly what I was interested in. Unfortunately that chapter is very fundamental and does not answer my question. It did give me few ideas though.</p>
+
+<p> My goal would be to have an infinitely big, persistent world. The game would not have to simulate every single agent in the entire world on every game loop tick. That would be silly. It would simulate only the agents within the view of the player. All other agents instead of being simulated separately would be rather kind of reduced to a "heat map of probabilities" in a similar way GTA or SimCity games do with cellular automata layers. But even in that case there would be static objects which don't require processing every tick but do require being remembered separately. For example if I'd kill a deer and then left that area to gather wood for a bonfire, I would expect the deer's corpse to still be there when I return.</p>
+
+<p> I can imagine a simple 1 dimensional array with a list of all objects in the world. Such a list would be really long so I would be able to load only chunks of it at a time. How do I know which chunks to load? I should load only relevant chunks so onces that are near the player or in the player's view.  Well if I care about the chunks of the list of game objects in a spatial sense (only chunks <em>close to</em> the player) than I should assign some spatial information to those chunks (aka index them). All fine so far, lets say our chunks are laid out on a grid of 16x16 "meters" and each chunk can hold any number of objects. Not ideal for very densely populated areas but let's ignore this problem for now and continue.</p>
+
+<p> Knowing chunk's size and x, y coordinates of the chunk I want I can easily calculate the position of that chunk in the file and load it into memory. Great! Eureka! I can go home. But what if usually there will be big number of chunks processed at once? I'd need to do IO file operation for many of the chunks I want to load. Is there any way I could pack and order those chunks in a file to minimize IO operations when reading them? </p>
+
+<p> From a simple calculation we can guestimate how long an average io operation takes on a HDD. Lets assume a 7200 RPM HDD (120 RPS) with average seek time 8ms. RPM stands for "revolutions per minute" or simply rotations per minute. To read data from a spinning disk HDD has to move the head (the needle) to the right position and then wait up to 1 full rotation. Ignoring time for the cpu overhead we can say that 8ms seek + rotational latency (1s / 120rps = ~8ms) is 16ms for a single read. Simply reading a big file in continuous fashion will generate multiple io operations. Naturally seeking to neighbour tracks will be much faster than changing a cylinder and our guestimate is generally really rough. But for our purposes knowing the order of magnitude should be enough. You can read more here https://en.wikipedia.org/wiki/Hard_disk_drive_performance_characteristics.</p>
+
+<p> I looked into few different ideas on how to index and encode the chunks on wikipidia https://en.wikipedia.org/wiki/Spatial_database#Spatial_index and that game programming book http://gameprogrammingpatterns.com/spatial-partition.html.</p>
+
+<p> https://sites.cs.ucsb.edu/~suri/psdir/ASP.pdf</p>
+
+<p> <strong>Binary Trees</strong> While thinking about ways I could encode the coordinates in a file I arrived at Binary Trees. Not exactly a spatial data structure. Rather a fundamental computer data structure. Idea is simple a set of values is recursively divided into two subsets. Left set holds values smaller then the division point, right set holds values bigger then the division point. Only leaf nodes (nodes without children) of the tree hold actual po. There is many different permutations of that idea and there are many different considerations. Balancing the tree is often one of the big concerns.</p>
+
+<p> <strong>B-Trees</strong></p>
+
+<p> After Binary Trees I skipped over the binary heaps, binomail heaps and priority queues. Then I found B-Trees (https://queue.acm.org/detail.cfm?id=1814327). Simply put, B-Trees are a lot like Binary Trees but can have <em>m</em> max children (rather then 2) and are designed such that really large trees can be kept in storage and only part of the tree is loaded to memory at any moment. Similar indexes are paged in and out of memory together. That minimises the amount of memory (and io) operations For some reason I got inspired to check if MySQL uses B-trees, and it does. Then I saw that MySql uses R-Trees for spatial indexes. Then my head started spinning, I'm in over my head.</p>
+
+<p> <strong>Grid</strong></p>
+
+<p> But first Grid. Grid is the simples solution to my problem. Divide the world into equal size chunks with X and Y coordinates. Keep each chunk saved as a separate file is enough. Since this project is educational for me and I want to wet my feet in a bit in algorithms and data structures and the techniques similar to those used in the 3D engines I decided I still want to implement something more complex. To make it more challenging I decided I want my game to also support polygons. In case of grid it's quite easy to just cut the polygons at the chunk edges.</p>
+
+<p> <strong>Space filling curves</strong></p>
+
+<p> Space filling curves like Hilbert Curve are very interest and simple. It would certainly help save the chunks in a file in a more "streamable" fashion since the Hilbert curve makes the file bit stream more chunky and area like instead of having acontinuous horizontal line of the entire world. It would probably decrease amount of io needed to load the right chunks from the memory.</p>
+
+<p> <strong>BSP Trees</strong></p>
+
+<p> Binary Space Partitioning Trees are famous. They were used in the 90s for most of the 3D games, most notably Doom. It recursively subdivides the space into two convex spaces using hyperplanes as partitions.</p>
+
+<p> <strong>Quadtrees</strong></p>
+
+<p> Next are quadtrees. I know quadtrees or more specifically octrees are commonly used in the 3D video game industry. If I'm not mistaken leading occlusion culling software Umbra3D (used by such games as DOOM 2016 or Witcher 3) uses octrees as foundation for their algorithm. My first thought about quadtrees is that they share a lot with the hilbert curve. It seems like a quadtree could be encoded using hilbert curve. Quadtrees are also a special case of a BSP Tree.</p>
+
+<p> <strong>K-d tree</strong></p>
+
+<p> Another binary tree. This one is k-dimensional. It's actually another special case of a BSP Tree. Each leaf of the tree is a point that implicitly splits the space into two so called "half-spaces". K-d trees are used in ray tracing probably because they are very efficient at queries but they are too slow for real time manipulations, building and rebuilding takes too long.</p>
+
+<p> <strong>R-trees</strong></p>
+
+<p> Wikipedia entry on r-trees is promising. They have native support for polygons and were specifically design for large datasets that cannot be kept entirely in memory and have to be paged in and out of ram from disk. seems like r-trees generally have faster lookups and quadtrees are faster to build, interesting trade off. Another interesting fact about r-trees is that they use MBR (minimal bounding rectangles) which means I can have the top level of the tree spanning entire galaxy and immediate next level really small for example 16 square meters. That means no unnecessary subdivisions and index tree branches in a galaxy where only fraction of one percent has been generated.</p>
+
+<p> <strong>Geohash</strong></p>
+
+<p> Geohash approach seems very similar to the Grid but it has few interesting properties on it's own. Geohash has a single hash code value, not a coordinate pair like the Grid. Arbitrary precision of coordinates and gradual loss of precising while removing characters from the end of the hash code could come in useful. This also results with places nearby presenting similar hash code prefix. This naturally leads to indexing the hashes, B-Tree would be ideal. The hash code itself is a base 32 encoded interleaved pair of binary indexes for coordinates. Pretty smart.</p>
+
+<p> Honestly half way through this research I got bored with it and with making a roguelike anyway. If I'd follow through I'd probably go for a combination of Geohash, Grid and Hilbert Curve. Geohash would allow arbitrary sizes, allowing entire galaxy of meters. Grid is the simple partitioning algorithm and can be encoded directly in geohash and Hilbert Curve is a nice packing algorithm to order grid cells and save on disk to be streamed to memory later.</p>
+
+<p> I am really happy I did this research, I've learned a decent chunk of algorithms and data structures and feel much more confident now about my understanding how games organise space and implement open worlds.</p>
+
 <h4>Tue Feb  4 00:58:57 CET 2020</h4>
 
 <p> Another quick update. I just felt inspired and decided to add html template to my blog so I can make shorter lines and longer line spacing. Looks much better now! Also fixed the post ordering so post 10 doesn't show immidiately after post 1 but rather after post 1. And reversed the order so the latest post is at the top.</p>

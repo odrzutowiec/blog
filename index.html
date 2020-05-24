@@ -1,5 +1,19 @@
 <p> <html>   <head>     <meta name="viewport" content="width=device-width, initial-scale=1.0">     <style>       * {         box-sizing: border-box;       }       body {         width: 30em;         margin: auto;         font-size: 22px;         line-height: 1.5em;         overflow-wrap: break-word;         word-wrap: break-word;         hyphens: auto;       }       @media (max-width: 704px) {         body {           padding: 0 1em;           width: 100%;         }       }     </style>     <title>Odrzutowiec Blog</title>   </head>   <body></p>
 
+<h3>Sun 24 May 15:52:27 CEST 2020</h3>
+
+<p> Since firday I've been reading the <a href="https://repo.or.cz/nvi.git">nvi repo</a>. I decided writing my own editor in c is the best way to refresh my c-fu. It's been quite educative and definetly a history lesson of open source software development. I've cloned it and started removing features I'm not interested in like perl/tcl support or gtk/motif versions. </p>
+
+<p> I'm very excited. Vim is too much. It took me a decade to get familiar with it and I still don't know more then a half of it. Ed is too simplistic, support for autoindentation is a must in 2020, same with tab/space indentaion conversion. Vi is almost perfect, but I still miss some quiality of life features from vim. I think the perfect editor for me is somewhere between vi and vim. </p>
+
+<p> I also have my own ideas on how to improve it. </p>
+
+<p> I want to implement Plan9's Structural Regular Expressions like they did in <a href="https://github.com/martanne/vis">vis</a>. Also I had some ideas about a new mode for vi editor which also operates on objects and motions but they are ast objects and motions instead of word objects and motions. And finally I'd like to have scripting support for any and all languages. </p>
+
+<p> I don't want to have built in interpreter for perl or lua or nodejs. Instead I'd like to leverage posix process communication (maybe pipes?) so that users can write scripts in any and all languages they like extremly easily. If you want to add a new word object you can do it in a simple php program which just uses standard input and output to communicate with VIP. Or any other language for that matter. Or add entirly new editing mode. I want the scripting to be based on standard basic posix features, extremly easy to implement (so that a developer with less then 6 months of experience could extend VIP however they want) and extremly powerful (so that scripting can change virtually any aspect of how Vip works). Lofty dreams I know.</p>
+
+<p> <a href="https://github.com/odrzutowiec/vip">https://github.com/odrzutowiec/vip</a></p>
+
 <h3>Mon  4 May 12:18:35 CEST 2020</h3>
 
 <p> My interest are in few things and those things seem to naturally intertwine and connect with each other in a complex, folded many times over manner. Every time I learn something new	on the edge of my area of interest I discover entirly new locus of meaning which connects in new, surprising and complex ways with the existing body of knoweledge making the entire model even more convoluted. I developed an interest in systems via programming. There are many differnt systems at different levels. On other such system is social dynamics in professional context. And generally in any context. Recently I came across the Gervais Principle. It's an amazing, engineering model of social dynamics of comercial organisations. </p>

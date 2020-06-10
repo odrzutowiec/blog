@@ -26,7 +26,7 @@ deploy: $(MD_OBJECTS:src=deploy) $(AWK_OBJECTS:src=deploy)
 	@echo "Deployed";
 
 test: build
-	open build/index.html
+	open build/index.html || xdg-open build/index.html
 
 build_dir:
 	mkdir -p build

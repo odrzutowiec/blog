@@ -1,5 +1,23 @@
 <p> <html>   <head>     <meta name="viewport" content="width=device-width, initial-scale=1.0">     <style>       * {         box-sizing: border-box;       }       body {         width: 30em;         margin: auto;         font-size: 22px;         line-height: 1.5em;         overflow-wrap: break-word;         word-wrap: break-word;         hyphens: auto;       }       @media (max-width: 704px) {         body {           padding: 0 1em;           width: 100%;         }       }     </style>     <title>Odrzutowiec Blog</title>   </head>   <body></p>
 
+<h3>Wed 10 Jun 23:10:16 CEST 2020</h3>
+
+<p> My <a href="https://github.com/odrzutowiec/vip">nvi fork project</a> is making steady progress. I decided to name it VIP, I'm quite enjoying all the potential expansions of the acronym. Vi by Pyzozord (my IRC nickname), Very Important Program, VI with Plugins, VI Perfected. The possibilites are endless.</p>
+
+<p> Anyway I managed to remove even more stuff: catalog - responsible for translations, clib - no need to support environemnts who don't have full c library, db - no need to maintain source for that, instead I'm using now libdb and ip/ipc - no need to worry about inter process communication for now, I have a specyfic idea for how I want the plugin system to work.</p>
+
+<p> Hopefully I can remove regexp, ideally I don't want to maintain regular expression engine and just link statically a regexp library available on the system.</p>
+
+<p> Can't wait to the moment I'll start writing features for this thing. Not sure what the first feature should be. Something helloworld-y, something just to get me started. Maybe just modification for the visual bell, the full screen flash is quite obtrusive.</p>
+
+<p> In fact I'm actually writing this post in the latest build of vip, there is virtually no difference what so ever comparing to the normal nvi.</p>
+
+<p> After vip will be usable enough, the next step will be to make my own terminal emulator. I want something extremly simple. But I do want media playback in the background. I want my terminal to be able to display images and videos in the background and adjust solid color overlay so forground text is still readable. I'm eyeballing the <a href="http://st.suckless.org">suckless terminal</a>. It's based on Xorg but maybe I could migrate it to SDL so that I can compile it on mac? It's quite great, really lean code, still well supported and plenty of extra features I can add via code patches.</p>
+
+<p> Writing code in my own code editor inside my own terminal emulator... Finally at peace.</p>
+
+<p> Can't wait for those looks in the eyes of collegues who asked "What terminal are you using?" or "Your Vi looks quite strange, how did you do that?".</p>
+
 <h3>Sun 24 May 15:52:27 CEST 2020</h3>
 
 <p> Since firday I've been reading the <a href="https://repo.or.cz/nvi.git">nvi repo</a>. I decided writing my own editor in c is the best way to refresh my c-fu. It's been quite educative and definetly a history lesson of open source software development. I've cloned it and started removing features I'm not interested in like perl/tcl support or gtk/motif versions. </p>

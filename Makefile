@@ -7,7 +7,7 @@ AWK_OBJECTS = $(AWK_SOURCES:.awk=.html)
 
 build: $(MD_OBJECTS) ${AWK_OBJECTS}
 
-deploy: $(MD_OBJECTS:src=deploy) $(AWK_OBJECTS:src=deploy)
+deploy-github: $(MD_OBJECTS:src=deploy) $(AWK_OBJECTS:src=deploy)
 	@rm -rf deploy;\
 		DEPLOT_GIT_BRANCH=gh-pages;\
 		DEPLOY_GIT_REMOTE=$$(git remote);\
@@ -23,6 +23,10 @@ deploy: $(MD_OBJECTS:src=deploy) $(AWK_OBJECTS:src=deploy)
 		git add .;\
 		git commit -m "$$(date)";\
 		git push $$DEPLOY_GIT_REMOTE $$DEPLOT_GIT_BRANCH;
+	@echo "Deployed";
+
+deploy-home: $(MD_OBJECTS:src=deploy) $(AWK_OBJECTS:src=deploy)
+	@scp build/index.html root@home:/var/www/michalradecki.com/blog.html
 	@echo "Deployed";
 
 test: build

@@ -1,5 +1,23 @@
 <p> <html>   <head>     <meta name="viewport" content="width=device-width, initial-scale=1.0">     <style>       * {         box-sizing: border-box;       }       body {         width: 30em;         margin: auto;         font-size: 22px;         line-height: 1.5em;         overflow-wrap: break-word;         word-wrap: break-word;         hyphens: auto;       }       @media (max-width: 704px) {         body {           padding: 0 1em;           width: 100%;         }       }     </style>     <title>Odrzutowiec Blog</title>   </head>   <body></p>
 
+<h3>Wed 17 Jun 21:52:38 CEST 2020</h3>
+
+<p> I noticed that the same searching bug happens in both vi and ex modes, if the authors of nvi had any kind of common sense there is probably a piece of code uses by both vi and ex that performs the actual search. Opensource developers are generally really skilled so I think it's safe to assume that.</p>
+
+<p> I noticed in that vi actually uses ex's address routines for its search feature. All functions in /vi/v_search.c eventually directly or indirectly call v_exaddr(). I'm pretty sure what I am looking for is not in the /vi/ directory.</p>
+
+<p> Not all of the /vi/v_search.c functions actually lead to v_exaddr(). Some lead to f_search() and b_search(), those two are defined in /common/search.c that's another potential candidate.</p>
+
+<h3>Sat 13 Jun 23:59:45 CEST 2020</h3>
+
+<p> Removing /regex is more dificult then I hoped. The autoconf script has --disable-re flag which basically makes the build ignore all code in /regex and link to system's regex.h instead which is great. However after it builds without too much compaining (single use of one non-standard flag REG_NOSPEC) the resulting binary behaves strange. Ctrl+a command results in "RE error: Invalid character class name". </p>
+
+<p> But that's not all, the biggest problem is when I use another autoconf script flag --enable-widechar. When I don't use that option I can't type in polish characters example for "polish a": "ą". And if I do use --enable-widechar I can type "polish a" normally "ą", but the / search feature yilds random results it matches arbitrary places in the file.</p>
+
+<p> I don't exactly nderstand why the regex library bundled with nvi source works properly and the gnu regex library does not. From what I found out both POSIX's and GNU clib's regcomp() don't support widecharacter strings. I couldn't find any information on BSD's regcomp(). Does it support widechars? If it doesn't what makes it work properly while gnu's doesn't?</p>
+
+<p> I don't really know what I am talking about or how characters are really actually handled in C. I know that standard ASCII and POSIX characters are 8 bit (actually 7 bit, last bit is not used) and therefor can encode english alphanumerics and few extra symbols. UTF8 is what's called "variable length encoding" which means that most common characters are encoded in 1 byte like ASCII less common characters in 2 bytes and so on up to 4 bytes. There are also "widechar" strings in C which seems to be a different name for UTF16 which is kind of like UTF8, also "variable length" however it consists of one or two 16 bit codes (as opposed to UTF8's one up to four 8 bit codes). </p>
+
 <h3>Wed 10 Jun 23:10:16 CEST 2020</h3>
 
 <p> My <a href="https://github.com/odrzutowiec/vip">nvi fork project</a> is making steady progress. I decided to name it VIP, I'm quite enjoying all the potential expansions of the acronym. Vi by Pyzozord (my IRC nickname), Very Important Program, VI with Plugins, VI Perfected. The possibilites are endless.</p>

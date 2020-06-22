@@ -1,5 +1,9 @@
 <p> <html>   <head>     <meta name="viewport" content="width=device-width, initial-scale=1.0">     <style>       * {         box-sizing: border-box;       }       body {         width: 30em;         margin: auto;         font-size: 22px;         line-height: 1.5em;         overflow-wrap: break-word;         word-wrap: break-word;         hyphens: auto;       }       @media (max-width: 704px) {         body {           padding: 0 1em;           width: 100%;         }       }     </style>     <title>Odrzutowiec Blog</title>   </head>   <body></p>
 
+<h3>Tue 23 Jun 00:12:27 CEST 2020</h3>
+
+<p> It seems like the search results in random positions even when there is no wide characters in searched file. Anyway I briefly checked out f_search(), interanlly executes regexec(). From what I found regexec does not support wide chars so that's potentially the issue but rather unlikely due to the symptopm I mentioned above. But before it calls regexec() it does a bunch of initalisation work: it calls search_init() which calles re_compile() which calls re_conv(). Apparently nvi translates for "vi regexp" to the POSIX regexp. I actually thought vi used POSIX regex syntax directly. And it pretty much does, this re_conv() function just supports the the magic characters and \<ptrn\> literal patterns (not sure what are those patterns atm).</p>
+
 <h3>Sun 21 Jun 23:49:08 CEST 2020</h3>
 
 <p> v_exaddr() eventuall calls f_search() too. Well not directly, v_exaddr() actually calls ex_range() which calls ex_line() which calls f_search(). Point is, all roads lead to f_search. I think my next step will be to investigate how f_search actually works and if it's broken with compile flag --enabled-widechar.</p>

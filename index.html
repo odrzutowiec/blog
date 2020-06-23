@@ -1,5 +1,24 @@
 <p> <html>   <head>     <meta name="viewport" content="width=device-width, initial-scale=1.0">     <style>       * {         box-sizing: border-box;       }       body {         width: 30em;         margin: auto;         font-size: 22px;         line-height: 1.5em;         overflow-wrap: break-word;         word-wrap: break-word;         hyphens: auto;       }       @media (max-width: 704px) {         body {           padding: 0 1em;           width: 100%;         }       }     </style>     <title>Odrzutowiec Blog</title>   </head>   <body></p>
 
+<h3>Tue 23 Jun 20:19:02 CEST 2020</h3>
+
+<p> Yesterday it was really late when I was investigating f_search(). I realised that I saw in GDB a value for a string that was presented by GDB as L"some string" because it was a wide char string. It seems that nvi keeps all strings as wide characters when --enable-widechar compilation options is used. </p>
+
+<p> I now think that f_search() or re_compile() or re_conv() or any other function is not the root cause of the problem. The problem is that all strings are wide, as in each character takes 16 bits while the regex expects 8 bits only, there is nothing I can do about it other then disable widechars therefor changing the memory alignment back to 8 bits per character like regex expects or change the regex library to one that supports wide character strings. Well I could also try to "flatten" the wide strings to normal strings just when they are fed to the regexec() function, but those kind of hacky solutions often tax you increasingly the further you go.</p>
+
+<p> I'm not sure if disabling the widechars is a viable options. Theoretically I could disable the widechars and make the entire system operate on 8 bit strings while enabling widechar curses library so that it can still render wide characters correctly in the terminal. That seems plausable, however I'm not sure how will the system behave when moving cusor around a wide character. Assuming that this idea would work, lets say we have a string "hello Micha|ł" where | is the cursor. If I have 8 bit string and 16 bit curses library, what happens if I move the cursor one character to the right now? Have I moved 8 bit or 16 bit? And if I moved 8 bit is my cursor "inside" the "ł" from the perspective of curses library? That could prove problematic. However if this would just work, it would be the simplest solution, so it's still tempting to investigate it.</p>
+
+<p> The other option is to replace the libc's regex library with some other "mostly compatible" library which supports wide characters. I say "mostly compatible" because I found out yesterday that nvi does some light processing on the regex pattern before compiling it in re_conv(). So whatever library I choose should have regex syntax similiar enough so that I don't need to change re_conv() too much. I found following candidates:</p>
+
+<ul>
+<li>PCRE - perl's regex library, widly popular library and syntax, mostly superset for libc's regex syntax</li>
+<li>TRE - <a href="https://github.com/martanne/vis">vis editor</a> is using that under the hood</li>
+<li>RE2 - a regex library from google, seems quite popular as well</li>
+<li>Plan9's regexp - I heard good things about regexes in Plan9</li>
+</ul>
+
+<p> Also I noticed that TRE for Vis is optional and when not used Vis uses <regex.h> I wonder how they solved it. I heard that Vis uses musl insatead of glibc. I just checked and musl's regexp is based on TRE, so it's possible that vis has widechar support either way because it uses directly or indirectly TRE.</p>
+
 <h3>Tue 23 Jun 00:12:27 CEST 2020</h3>
 
 <p> It seems like the search results in random positions even when there is no wide characters in searched file. Anyway I briefly checked out f_search(), interanlly executes regexec(). From what I found regexec does not support wide chars so that's potentially the issue but rather unlikely due to the symptopm I mentioned above. But before it calls regexec() it does a bunch of initalisation work: it calls search_init() which calles re_compile() which calls re_conv(). Apparently nvi translates for "vi regexp" to the POSIX regexp. I actually thought vi used POSIX regex syntax directly. And it pretty much does, this re_conv() function just supports the the magic characters and \<ptrn\> literal patterns (not sure what are those patterns atm).</p>

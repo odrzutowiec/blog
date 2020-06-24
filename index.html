@@ -1,5 +1,15 @@
 <p> <html>   <head>     <meta name="viewport" content="width=device-width, initial-scale=1.0">     <style>       * {         box-sizing: border-box;       }       body {         width: 30em;         margin: auto;         font-size: 22px;         line-height: 1.5em;         overflow-wrap: break-word;         word-wrap: break-word;         hyphens: auto;       }       @media (max-width: 704px) {         body {           padding: 0 1em;           width: 100%;         }       }     </style>     <title>Odrzutowiec Blog</title>   </head>   <body></p>
 
+<h3>Wed 24 Jun 23:33:16 CEST 2020</h3>
+
+<p> I managed to replace the glibc regex library with <a href="https://github.com/laurikari/tre">TRE</a>. There was only a single issue with compilation after replacing the library. The codebase is using non-POSIX REG_STARTEND regexec() flag. For now I just removed that flag. Other then that everything compiled flawlessly including the --enable-widechar compilation option.</p>
+
+<p> The executable seems to function normally. I can enter and see correct wide characters including ą and ł. However the search feature seems to be off. It seems to be matching only the first word in a line. I suspect it has something to do with that REG_STARTEND I removed.</p>
+
+<p> From what I could find out f_search() calls db_get() to load a line of text from the opened text file. As far as I can see db_get() copies the value of the line onto one of the arguemnts it receives without cleaning this argument first so lines often look like current line was just pasted on top of the last line. I presume that was done in the name of performance and is relaying on that REG_STARTEND flag.</p>
+
+<p> I am not entirely sure but I suspect if I can emulate the REG_STARTEND behaviour I can fix the search but it's a gamble - I am not 100% sure what is actually going on. Anyway the "cleverest" idea I had on how to emulate REG_STARTEND was to just clean the line variable so that regexec() is operating on a clean line each time.</p>
+
 <h3>Tue 23 Jun 20:19:02 CEST 2020</h3>
 
 <p> Yesterday it was really late when I was investigating f_search(). I realised that I saw in GDB a value for a string that was presented by GDB as L"some string" because it was a wide char string. It seems that nvi keeps all strings as wide characters when --enable-widechar compilation options is used. </p>

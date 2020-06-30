@@ -1,5 +1,11 @@
 <p> <html>   <head>     <meta name="viewport" content="width=device-width, initial-scale=1.0">     <style>       * {         box-sizing: border-box;       }       body {         width: 30em;         margin: auto;         font-size: 22px;         line-height: 1.5em;         overflow-wrap: break-word;         word-wrap: break-word;         hyphens: auto;       }       @media (max-width: 704px) {         body {           padding: 0 1em;           width: 100%;         }       }     </style>     <title>Odrzutowiec Blog</title>   </head>   <body></p>
 
+<h3>Tue 30 Jun 23:18:48 CEST 2020</h3>
+
+<p> Grand success! After few days of banging my head on the widechar and regexp search problem I decided to test it in isolation. I created a simple program with few lines of c built it with gcc myself - just a new, super small project to test things out. I quickly realised that TRE supports widechar charters but not via standard regcomp() and regexec() api, it has regwcomp() and regwexec()! That was the key! I was feeding widecharacter strings to normal regex functions and they were getting confused. So I have now a functioning widechar version of vi using TRE for regexes!</p>
+
+<p> There is still the problem with missing support for REG_STARTEND which produces false postives in some lines and matches only the first occurance in the line (so "n" command doesn't jump to the next occurance in the same line) but I can emulate it with the idea I was talking about in the previous post. It's somewhat annoying but I can see now that's almost back to be 100% functioning.</p>
+
 <h3>Wed 24 Jun 23:33:16 CEST 2020</h3>
 
 <p> I managed to replace the glibc regex library with <a href="https://github.com/laurikari/tre">TRE</a>. There was only a single issue with compilation after replacing the library. The codebase is using non-POSIX REG_STARTEND regexec() flag. For now I just removed that flag. Other then that everything compiled flawlessly including the --enable-widechar compilation option.</p>

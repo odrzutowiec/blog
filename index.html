@@ -1,5 +1,13 @@
 <p> <html>   <head>     <meta name="viewport" content="width=device-width, initial-scale=1.0">     <style>       * {         box-sizing: border-box;       }       body {         width: 30em;         margin: auto;         font-size: 22px;         line-height: 1.5em;         overflow-wrap: break-word;         word-wrap: break-word;         hyphens: auto;       }       @media (max-width: 704px) {         body {           padding: 0 1em;           width: 100%;         }       }     </style>     <title>Odrzutowiec Blog</title>   </head>   <body></p>
 
+<h3>Fri  3 Jul 00:14:54 CEST 2020</h3>
+
+<p> I've finally finished removing all clutter from the vip's source code. From the original 612 files there are now only 172 files left. A whole lot less files to maintain and understand.</p>
+
+<p> My recent effort in migrating the codebase from inhouse regexp to the TRE library served me well as hoped. I started making changes in the actual code and got more confident with GDB and debugging. I feel I'm now ready to starting introducing new features. </p>
+
+<p> Before that however, there are still few bugs to iron out which appeard after all that clutter removal. Most noticable of which is the strange error about database each time I close vip. "BDB0635 DB_CREATE must be specified to create databases." it utters unashamed each time for goodbye. I suspect that's because Vip was using db3 before and now I made it use system's version which on my system is db5. Not a big deal, vip functions most of the time normaly. Still that's the first bug to fix.</p>
+
 <h3>Tue 30 Jun 23:18:48 CEST 2020</h3>
 
 <p> Grand success! After few days of banging my head on the widechar and regexp search problem I decided to test it in isolation. I created a simple program with few lines of c built it with gcc myself - just a new, super small project to test things out. I quickly realised that TRE supports widechar charters but not via standard regcomp() and regexec() api, it has regwcomp() and regwexec()! That was the key! I was feeding widecharacter strings to normal regex functions and they were getting confused. So I have now a functioning widechar version of vi using TRE for regexes!</p>

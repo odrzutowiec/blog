@@ -51,3 +51,8 @@ clean:
 	rm -rf build;
 	rm -rf deploy;
 
+post:
+	@num="$$(expr $$(ls -1 ./src/posts/ | sort -h | tail -1 | sed 's/.md//') + 1)";\
+		post="./src/posts/$$num.md";\
+		echo "### $$(date)" > $$post;\
+		vip $$post

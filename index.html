@@ -1,5 +1,9 @@
 <p> <html>   <head>     <meta name="viewport" content="width=device-width, initial-scale=1.0">     <style>       * {         box-sizing: border-box;       }       body {         width: 30em;         margin: auto;         font-size: 22px;         line-height: 1.5em;         overflow-wrap: break-word;         word-wrap: break-word;         hyphens: auto;       }       @media (max-width: 704px) {         body {           padding: 0 1em;           width: 100%;         }       }     </style>     <title>Odrzutowiec Blog</title>   </head>   <body></p>
 
+<h3>Tue 21 Jul 22:34:35 CEST 2020</h3>
+
+<p> I fixed the db problem. It was simply a change in the db_open api in db5. It needs now DB_CREATE flag. Easy enough. After fixing this I discovered that the "catalog" code (probably unix name or name convention for internationalization) it was trying to load a file based on the LANG env var which obviously doesn't exist because I have removed the catalog directory completely. I disabled the catalog file loading with early return 1 in the loading function. I also left a TODO comment there to remember I need to clean it up since I won't be using it at all. If you are usig vi-like program you can speak english, let's be reasonable.</p>
+
 <h3>Sat  4 Jul 13:27:02 CEST 2020</h3>
 
 <p> I updated the <a href="">readme file in vip repo</a> recently, including a section with featrure ideas. Next day I randomly stumbled upon <a href="https://opensource.apple.com/source/vi/vi-7/nvi/docs/features.auto.html">Apple's notes on features ideas for nvi</a>. That's a good source of inspirations for features. In general I'm surprised that apple has nvi source code and it my come in useful in more ways then one.</p>

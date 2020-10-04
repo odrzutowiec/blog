@@ -1,5 +1,19 @@
 <p> <html>   <head>     <meta name="viewport" content="width=device-width, initial-scale=1.0">     <style>       * {         box-sizing: border-box;       }       body {         width: 30em;         margin: auto;         font-size: 22px;         line-height: 1.5em;         overflow-wrap: break-word;         word-wrap: break-word;         hyphens: auto;       }       @media (max-width: 704px) {         body {           padding: 0 1em;           width: 100%;         }       }     </style>     <title>Odrzutowiec Blog</title>   </head>   <body></p>
 
+<h3>Sun  4 Oct 10:39:19 CEST 2020</h3>
+
+<p> Amazing! Yesterday I decided to have another stab at the VIP's db error. After debugging and reading some db5 documentation I randomly stumbled up the solution. The bug is now fixed marking VIP as a fully usable vi. I'll describe the bug again and it's solution for future reference.</p>
+
+<p> Bug: After deleting a line or multiple lines such that the resulting file has less lines in total the undo command that would bring back those deleted lines errored and did not bring back those deleted lines.</p>
+
+<p> Analysis: The symptopm of the the underlaying issue was a db error "BDB0063 DB_BUFFER_SMALL: User memory too small for return value" which was happening during append() which was called when bringing back those deleted lines. From what I understand after reading the documentation for DBC->put() (in the code it's DBC->c_put(), the name of the function changed in db5 but the legacy db4 naming still works) this "DB_BUFFER_SMALL" error indicates that we couldn't load the data from the database back to the memory because allocated memory is too small. </p>
+
+<p> Fix: Changing the key's flag to DB_DBT_MALLOCK informs db that it should allocate enough memory for us. I assume that was the default behaviour in db3 and now in db5 has to be explicitly stated. This fix can potentially be introducing new memory leaks, however I'm not sure at the moment. I'll need to put the entire program through valgrind anyway.</p>
+
+<h3>Mon 14 Sep 14:47:16 CEST 2020</h3>
+
+<p> Just a quick update. I temporarly suspended my C education. I went as far as the exercise 5-17 from K{{contents}}R and I really enjoyed it. I certainly plan to come back to that and finish the book. However currently I feel I need to educate myself with the fundamentals of computer science, particularly algorithms, system design and other interesting, useful but ultimatelly never in partice used skills that are necessary to prove oneself during a job interview... My attitude probably shows that I have mixed feelings about this. On one hand those subjects are fascinating on the other I'm not especially happy to be so rudly interrupted during my C education.</p>
+
 <h3>Fri 21 Aug 15:16:08 CEST 2020</h3>
 
 <p> First of all I just discovered that my blog is capable of producting "&", I just need to add a backslash for escape. I must have forseen this problem and implemented the escape sequence preemptively and had forgotten about it. It's a great feeling when you can thank your past self for being nice to you. ;)</p>

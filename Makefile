@@ -5,6 +5,9 @@ AWK_OBJECTS = $(AWK_SOURCES:.awk=.html)
 
 .DEFAULT: build
 
+spell-all: 
+	for F in src/**/*.md; do aspell -c $$F; done
+
 build: $(MD_OBJECTS) ${AWK_OBJECTS}
 
 deploy-github: $(MD_OBJECTS:src=deploy) $(AWK_OBJECTS:src=deploy)

@@ -1,5 +1,11 @@
 <p> <html>   <head>     <meta name="viewport" content="width=device-width, initial-scale=1.0">     <style>       * {         box-sizing: border-box;       }       body {         width: 30em;         margin: auto;         font-size: 22px;         line-height: 1.5em;         overflow-wrap: break-word;         word-wrap: break-word;         hyphens: auto;       }       @media (max-width: 704px) {         body {           padding: 0 1em;           width: 100%;         }       }     </style>     <title>Pyzozord Blog</title>   </head>   <body></p>
 
+<h3>Fri 30 Oct 16:44:13 CET 2020</h3>
+
+<p> I'll be preparing short articles about the two books I just finished: The C Programming Language by Kernighan and Ritchie and The Passionate Programmer by Fowler but in the mean time...</p>
+
+<p> I just finally figured out how to use aspell, and thusly added <code>make spell-all</code> command to my blog and reviewed and corrected all posts so far.</p>
+
 <h3>Fri  9 Oct 13:30:25 CEST 2020</h3>
 
 <p> The VIP error turns out to be another case of REG_STARTEND flag bsd extension a for regexec() in ex/ex_subst.c in s() function responsible for the :s command. Same issue  as the last time with searching. This is aftermath of migrating to TRE which doesn't  support bsd's extensions. I noticed one more case of the same flag in ex/ex_global.c won't fix it for now since I haven't encountered that issue yet, but should be pretty straightforward to fix it. Vip is getting better and I am getting better at making it better.</p>
@@ -8,13 +14,13 @@
 
 <p> First to get it off my mind: I discovered another bug in VIP. I'm not exactly sure when it happens but it seems to happen if I use \$ in substitution command like so :s/$/./ on any line. Hopefully I can get it fixed today.</p>
 
-<p> Now, for the main course. I have been considering going offline, or rather fantasising about going offline for years now. The constant noise and addictive nature of social media, especially youtube.com and 9gag.com in my case make it almost impossible to be bored. I strongly belive being bored at least a bit is healthy. It creates space for you to think, helps with the feeling of being  under constant pressure and the "racing mind" syndrome. It forces you to plan just a bit which in turn teaches you to not just react immidiatly on your impulses. I knew about some of those effects before trying to go offline. After two days of limiting my access to internet I learned some of those other effects and ecstatic!</p>
+<p> Now, for the main course. I have been considering going offline, or rather fantasizing about going offline for years now. The constant noise and addictive nature of social media, especially youtube.com and 9gag.com in my case make it almost impossible to be bored. I strongly believe being bored at least a bit is healthy. It creates space for you to think, helps with the feeling of being  under constant pressure and the "racing mind" syndrome. It forces you to plan just a bit which in turn teaches you to not just react immediately on your impulses. I knew about some of those effects before trying to go offline. After two days of limiting my access to internet I learned some of those other effects and ecstatic!</p>
 
-<p> I was chatting on IRC about the golden era of computing the 70s and 80s and about how many things I hold dear were discovered at that time. Most defining computer science ideas, my faviour game of all time Dungeons & Dragons. There was no easy access to internet and people were reading magazines. Kids were typing in code for the games from magazine into to Commodore 64 (or ZX Sepctrum  in Europe). That just sounds amazing to me. People who experienced that are  often saying that now is better and they would trade basic and magazine games for  google any day. They keep saying how information was scerce and in retrospective  it was a dark era. I think it's easy for them to say, they were brought up in  that era, they did not have a chance to build bad habits about constant access to  information.</p>
+<p> I was chatting on IRC about the golden era of computing the 70s and 80s and about how many things I hold dear were discovered at that time. Most defining computer science ideas, my favor game of all time Dungeons & Dragons. There was no easy access to internet and people were reading magazines. Kids were typing in code for the games from magazine into to Commodore 64 (or ZX Sepctrum  in Europe). That just sounds amazing to me. People who experienced that are  often saying that now is better and they would trade basic and magazine games for  google any day. They keep saying how information was scarce and in retrospective  it was a dark era. I think it's easy for them to say, they were brought up in  that era, they did not have a chance to build bad habits about constant access to  information.</p>
 
-<p> Anyway, the subject moved on and I explained that I feel addicted to internet  and don't have enough self discipline to turn it off. One person suggested I  should just block the websites I don't like.  It's an amzing idea. Why did I not think about that before? I was only thinking about absolutely cutting off access  to all of the internet, but in reality most of my time is spent on just a handful  of website, and really non https internet usage is negligible, virtually  nonexistant. So this idea is great. I decided to implement it right away. That  was two days ago.</p>
+<p> Anyway, the subject moved on and I explained that I feel addicted to internet  and don't have enough self discipline to turn it off. One person suggested I  should just block the websites I don't like.  It's an amazing idea. Why did I not think about that before? I was only thinking about absolutely cutting off access  to all of the internet, but in reality most of my time is spent on just a handful  of website, and really non https internet usage is negligible, virtually  nonexistent. So this idea is great. I decided to implement it right away. That  was two days ago.</p>
 
-<p>  I experimented with blocking urls on my ISP's router but it seems to not work  for some websites. One thing that came in useful from the router settings is  that I limited time when my laptop has access to internet. I set it to 09-17  every day. This has already shown an amazing break in habit. For the particular  websites I first tried adding those domains to /etc/hosts however I quickly  realised some websites have multiple top level domains like .com .co.uk .nl  etc., especially google.com which I decided to block as well. Yes it seems to  shock some people but I decided to kill completly access to google.com bing.com  and duckduckgo.com. I am now using as my main and only search wikipedia. Yes  you are reading it right, wikipedia. And for programming questions I use  stackexchange.com. It takes a bit of adjustment, but really not as much as you  would think. It also breaks another bad habit and forces me to read more  offical documentations. To implement this revolutionary idea I reached out for  help on IRC and few moments later started my journy on writing my first my  first NSS module. I present to you <a href="https://github.com/pyzozord/rehosts">Rehosts</a>. It's like /etc/hosts file but allows for regular expressions. This is amazing, I have no idea why none else  did it before. I remember multiple times I wished I could use regexp in  /etc/hosts.</p>
+<p>  I experimented with blocking urls on my ISP's router but it seems to not work  for some websites. One thing that came in useful from the router settings is  that I limited time when my laptop has access to internet. I set it to 09-17  every day. This has already shown an amazing break in habit. For the particular  websites I first tried adding those domains to /etc/hosts however I quickly  realized some websites have multiple top level domains like .com .co.uk .nl  etc., especially google.com which I decided to block as well. Yes it seems to  shock some people but I decided to kill completely access to google.com bing.com  and duckduckgo.com. I am now using as my main and only search Wikipedia. Yes  you are reading it right, Wikipedia. And for programming questions I use  stackexchange.com. It takes a bit of adjustment, but really not as much as you  would think. It also breaks another bad habit and forces me to read more  official documentations. To implement this revolutionary idea I reached out for  help on IRC and few moments later started my journey on writing my first my  first NSS module. I present to you <a href="https://github.com/pyzozord/rehosts">Rehosts</a>. It's like /etc/hosts file but allows for regular expressions. This is amazing, I have no idea why none else  did it before. I remember multiple times I wished I could use regexp in  /etc/hosts.</p>
 
 <p> This post turned out way bigger then I expected so I'll have to write another one with the technical explanation of how does that NSS module work. This is actually first time for me writing an extension to an operating system, and I'm really proud of myself.</p>
 
@@ -22,27 +28,27 @@
 
 <p> Amazing! Yesterday I decided to have another stab at the VIP's db error. After debugging and reading some db5 documentation I randomly stumbled up the solution. The bug is now fixed marking VIP as a fully usable vi. I'll describe the bug again and it's solution for future reference.</p>
 
-<p> Bug: After deleting a line or multiple lines such that the resulting file has less lines in total the undo command that would bring back those deleted lines errored and did not bring back those deleted lines.</p>
+<p> Bug: After deleting a line or multiple lines such that the resulting file has less lines in total the undo command that would bring back those deleted lines error-ed and did not bring back those deleted lines.</p>
 
-<p> Analysis: The symptopm of the the underlaying issue was a db error "BDB0063 DB_BUFFER_SMALL: User memory too small for return value" which was happening during append() which was called when bringing back those deleted lines. From what I understand after reading the documentation for DBC->put() (in the code it's DBC->c_put(), the name of the function changed in db5 but the legacy db4 naming still works) this "DB_BUFFER_SMALL" error indicates that we couldn't load the data from the database back to the memory because allocated memory is too small. </p>
+<p> Analysis: The symptom of the the underlying issue was a db error "BDB0063 DB_BUFFER_SMALL: User memory too small for return value" which was happening during append() which was called when bringing back those deleted lines. From what I understand after reading the documentation for DBC->put() (in the code it's DBC->c_put(), the name of the function changed in db5 but the legacy db4 naming still works) this "DB_BUFFER_SMALL" error indicates that we couldn't load the data from the database back to the memory because allocated memory is too small. </p>
 
-<p> Fix: Changing the key's flag to DB_DBT_MALLOCK informs db that it should allocate enough memory for us. I assume that was the default behaviour in db3 and now in db5 has to be explicitly stated. This fix can potentially be introducing new memory leaks, however I'm not sure at the moment. I'll need to put the entire program through valgrind anyway.</p>
+<p> Fix: Changing the key's flag to DB_DBT_MALLOCK informs db that it should allocate enough memory for us. I assume that was the default behavior in db3 and now in db5 has to be explicitly stated. This fix can potentially be introducing new memory leaks, however I'm not sure at the moment. I'll need to put the entire program through valgrind anyway.</p>
 
 <h3>Mon 14 Sep 14:47:16 CEST 2020</h3>
 
-<p> Just a quick update. I temporarly suspended my C education. I went as far as the exercise 5-17 from K&R and I really enjoyed it. I certainly plan to come back to that and finish the book. However currently I feel I need to educate myself with the fundamentals of computer science, particularly algorithms, system design and other interesting, useful but ultimatelly never in partice used skills that are necessary to prove oneself during a job interview... My attitude probably shows that I have mixed feelings about this. On one hand those subjects are fascinating on the other I'm not especially happy to be so rudly interrupted during my C education.</p>
+<p> Just a quick update. I temporarily suspended my C education. I went as far as the exercise 5-17 from K&R and I really enjoyed it. I certainly plan to come back to that and finish the book. However currently I feel I need to educate myself with the fundamentals of computer science, particularly algorithms, system design and other interesting, useful but ultimately never in Patrice used skills that are necessary to prove oneself during a job interview... My attitude probably shows that I have mixed feelings about this. On one hand those subjects are fascinating on the other I'm not especially happy to be so rudely interrupted during my C education.</p>
 
 <h3>Fri 21 Aug 15:16:08 CEST 2020</h3>
 
-<p> First of all I just discovered that my blog is capable of producting "&", I just need to add a backslash for escape. I must have forseen this problem and implemented the escape sequence preemptively and had forgotten about it. It's a great feeling when you can thank your past self for being nice to you. ;)</p>
+<p> First of all I just discovered that my blog is capable of producing "&", I just need to add a backslash for escape. I must have foreseen this problem and implemented the escape sequence preemptively and had forgotten about it. It's a great feeling when you can thank your past self for being nice to you. ;)</p>
 
-<p> I might change this behaviour though, & is a common character in normal text. I should probably choose something more obscure for the template variable syntax instead, I won't use those things as much as & in normal text.</p>
+<p> I might change this behavior though, & is a common character in normal text. I should probably choose something more obscure for the template variable syntax instead, I won't use those things as much as & in normal text.</p>
 
 <p> Anyhow,</p>
 
 <p> recently I have been "relearning" C. I am making my way through the <a href="https://en.wikipedia.org/wiki/The_C_Programming_Language">K&R</a>. I'm currently close the end of the second chapter. I've been also using the <a href="http://www.iso-9899.info/wiki/Main_Page">##c homepage</a>, it's a great collection of resources! </p>
 
-<p> This has been a extremly edcuative experience so far. Going slowly and methodically through all the boring details and drilling down on them let me discover new things I had no idea about.</p>
+<p> This has been a extremely educative experience so far. Going slowly and methodically through all the boring details and drilling down on them let me discover new things I had no idea about.</p>
 
 <ol>
 <li> Getting familiar with the standard library</li>
@@ -57,8 +63,8 @@
 
 <ul>
 <li>man stdio.h - ... or any other of the files for extra details</li>
-<li>stdio.h - stadnard input/output: printf, getchar, fgets</li>
-<li>limits.h - intersting constants including INT_MIN, UINT_MAX</li>
+<li>stdio.h - standard input/output: printf, getchar, fgets</li>
+<li>limits.h - interesting constants including INT_MIN, UINT_MAX</li>
 <li>strings.h - strlen and others</li>
 <li>math.h - pow and others, interestingly no int arguments, mostly floats and doubles</li>
 <li>stdlib.h - atoi converts string to integer </li>
@@ -66,7 +72,7 @@
 
 <h4>Endianness</h4>
 
-<p> On linux I can check the "endianness" or "the byte order" using <code>lscpu</code> in the terminal. Most systems use "Little Endian" which means that bytes are stored in reversed order. Literally the "most significant byte" is the last byte in the "word". Weird, I don't know why they did it. Here is a quote from wikipedia page about endianess:</p>
+<p> On Linux I can check the "endianness" or "the byte order" using <code>lscpu</code> in the terminal. Most systems use "Little Endian" which means that bytes are stored in reversed order. Literally the "most significant byte" is the last byte in the "word". Weird, I don't know why they did it. Here is a quote from Wikipedia page about endianess:</p>
 
 <p> Computer memory consists of a sequence of storage cells (smallest addressable units), most commonly called bytes. Each byte is identified and accessed in hardware and software by its memory address. If the total number of bytes in memory is n, then addresses are enumerated from 0 to n − 1. Computer programs often use data structures of fields that may consist of more data than is stored in one byte. For the purpose of this article where its use as an operand of an instruction is relevant, a "field" consists of a consecutive sequence of bytes and represents a simple data value which – at least potentially – can be manipulated by one hardware instruction. The address of such a field is mostly the address of its first byte. In addition to that, it has to be of numeric type in some positional number system (mostly base 10 or base 2 – or base 256 in case of 8-bit bytes). In such a number system the "value" of a digit is determined not only by its value as a single digit, but also by the position it holds in the complete number, its "significance". These positions can be mapped to memory mainly in two ways:</p>
 
@@ -77,22 +83,22 @@
 
 <h4>Integer numbers memory representation</h4>
 
-<p> Apparently most cpu architectures don't represent signed integers with just a "sign bit + normal integer in binary". They use a thing called <a href="https://en.wikipedia.org/wiki/Two%27s_complement">"the two's complement"</a>. It's one of the three options provided by the <a href="https://web.archive.org/web/20181230041359if_/http://www.open-std.org/jtc1/sc22/wg14/www/abq/c17_updated_proposed_fdis.pdf">official C standard</a>: sigh/magnitude, one's complement, two's complement, and the last one is the most popular because it has some benefits comparing to the others. One of such benefits is that it is impossible to represent a netative 0, there is only a positive zero.</p>
+<p> Apparently most CPU architectures don't represent signed integers with just a "sign bit + normal integer in binary". They use a thing called <a href="https://en.wikipedia.org/wiki/Two%27s_complement">"the two's complement"</a>. It's one of the three options provided by the <a href="https://web.archive.org/web/20181230041359if_/http://www.open-std.org/jtc1/sc22/wg14/www/abq/c17_updated_proposed_fdis.pdf">official C standard</a>: sigh/magnitude, one's complement, two's complement, and the last one is the most popular because it has some benefits comparing to the others. One of such benefits is that it is impossible to represent a negative 0, there is only a positive zero.</p>
 
 <p> As a heuristic we can imagine that signed integer two's complement implementation represented on a axis will look like this 0,1,...,126,127,-128,-127,-126,...,-2,-1. So with all bits set to 0 we get 0, we all bits set to 1 we get -1, with the first half of bits set to 1 we get 127. And when the next bit is set to 1 the next number after 127 will be -128. It's a gotcha you need to keep in mind when manipulating integer bits manually.</p>
 
 <h4>Floating point numbers memory representation</h4>
 
-<p> Floats can represent extremly big or small numbers if you don't care about 100% accuracy. However they can't respresent both at the same time. You can't have extremly large number with an extremely small fraction.</p>
+<p> Floats can represent extremely big or small numbers if you don't care about 100% accuracy. However they can't represent both at the same time. You can't have extremely large number with an extremely small fraction.</p>
 
 <p> Floating points have very interesting implementation. I'm sure I could read all about the details in the <a href="https://web.archive.org/web/20181230041359if_/http://www.open-std.org/jtc1/sc22/wg14/www/abq/c17_updated_proposed_fdis.pdf">official C standard</a> but I don't need to know everything right away. </p>
 
-<p> The <a href="https://evanw.github.io/float-toy/">Float Toy</a> helped me visualise and understand the architecture of floats. For now the following limited understanding should suffice.</p>
+<p> The <a href="https://evanw.github.io/float-toy/">Float Toy</a> helped me visualize and understand the architecture of floats. For now the following limited understanding should suffice.</p>
 
 <p> Floats are represented in memory as a string of 32 or 64 bits composed of three memory segments: the signed/unsigned bit, the "exponent" (24 bits) and the "significand" (7 bits).</p>
 
 <ul>
-<li>The signied/unsigned bit represents if the whole value is negative or positive</li>
+<li>The signed/unsigned bit represents if the whole value is negative or positive</li>
 <li>The "exponent" is essentially functioning as a scaling factor. It's a signed integer that will be used as power of 2. So 2^n. 2 is sometimes called the "radix" and it usually has the value of 2. It looks like the exponent is using the same scheme ("the two's complement") used to represent integers.</li>
 <li>The "significand" or significant digits, is a smaller unsigned value representing the "core" value that will be scaled by the exponents. From what I can see max value with all bits set to 1 represents 9.9999999, smallest possible values with all bits set to 0 represents 0 and each bit from left to right divides the number in half thus 10000000000000000000000 represents 0.5, 01000000000000000000000 represents 0.25 and so forth and 11000000000000000000000 is 0.5 + 0.25 = 0.75. Pretty neat.</li>
 <li>It also looks like if any bit of "exponent" is set then the "significant value" is 1 + the fraction.</li>
@@ -100,80 +106,80 @@
 
 <p> Together "signed, significand * 2^exponent" can represent a great range of numbers and and naturally the bigger the number the less "resolution" can be represented - hence floating point. It's a very clever design.</p>
 
-<p> It looks like x,y coordiantes in 32 bit floats are not capable of representing the surface of the entire earth in meters. At the very end the values jump for 2 meters. Now, 64 bit floats are more then enough to have every micrometer of plant earth.</p>
+<p> It looks like x,y coordinates in 32 bit floats are not capable of representing the surface of the entire earth in meters. At the very end the values jump for 2 meters. Now, 64 bit floats are more then enough to have every micrometer of plant earth.</p>
 
 <h3>Sat  1 Aug 23:51:00 CEST 2020</h3>
 
-<p> I noticed that deleting all content of a file and then executing 'u' undo command generates another db error. After short investigation I found append() to be the reason. Nvi "loggs" all changes to the open text document to be used later as history that can be traversed with "u" and ".". The append() function interanlly operates on the database. For some reason after deleting all contents in the file and then pressing "u" I get following error: "Error: unable to insert at line 0: BDB0063 DB_BUFFER_SMALL: User memory too small for return value". I suspect like with the previous bug I solved it's related to changing the berkeley database version from 3 to 5. I downloaded the official docmentation, and it's pretty extensive. I've read opinions that BDB is fairly easy in usage but it may be too much for me at the moment. I want to actually understand the problem and solve it properly and it will require of me to understand how BDB works and how to use it. I'm afraid it maybe be too much for me right now so I decided to temporarly go back to KnR untill I feel more confident with C. </p>
+<p> I noticed that deleting all content of a file and then executing 'u' undo command generates another db error. After short investigation I found append() to be the reason. Nvi "logs" all changes to the open text document to be used later as history that can be traversed with "u" and ".". The append() function interanlly operates on the database. For some reason after deleting all contents in the file and then pressing "u" I get following error: "Error: unable to insert at line 0: BDB0063 DB_BUFFER_SMALL: User memory too small for return value". I suspect like with the previous bug I solved it's related to changing the Berkeley database version from 3 to 5. I downloaded the official documentation, and it's pretty extensive. I've read opinions that BDB is fairly easy in usage but it may be too much for me at the moment. I want to actually understand the problem and solve it properly and it will require of me to understand how BDB works and how to use it. I'm afraid it maybe be too much for me right now so I decided to temporarily go back to K&R until I feel more confident with C. </p>
 
-<p> Also I just noticed the ampersand doesn't work in my blog tech. My awk script think's I'm trying to use a variable.</p>
+<p> Also I just noticed the ampersand doesn't work in my blog tech. My AWK script thinks I'm trying to use a variable.</p>
 
 <h3>Sat 25 Jul 14:40:36 CEST 2020</h3>
 
-<p> I noticed today that my server is having higher amount of bandwidth usage then it should. Pretty much noone knows about it so I'd expect zero activity. but in july there was almost 0.5GB of data sent by my server. I checked out the nginx logs and it looks like I am being constantly scanned for vulnerabilities. That's pretty scary. Who knows about it? And why do they do this? I check few IPs: russia, the netherlands, hong kong, they are all over the place, obviously not using their laptops and networks directly. I have nothing of value on my server, i suspect this may be an amtomated scan. I'm just not sure where they learned about my domain. Anyway for now I just limited the requests to save on the server bandwith.</p>
+<p> I noticed today that my server is having higher amount of bandwidth usage then it should. Pretty much no one knows about it so I'd expect zero activity. but in July there was almost 0.5GB of data sent by my server. I checked out the nginx logs and it looks like I am being constantly scanned for vulnerabilities. That's pretty scary. Who knows about it? And why do they do this? I check few IPs: Russia, the Netherlands, Hong Kong, they are all over the place, obviously not using their laptops and networks directly. I have nothing of value on my server, i suspect this may be an automated scan. I'm just not sure where they learned about my domain. Anyway for now I just limited the requests to save on the server bandwidth.</p>
 
 <h3>Tue 21 Jul 22:34:35 CEST 2020</h3>
 
-<p> I fixed the db problem. It was simply a change in the db_open api in db5. It needs now DB_CREATE flag. Easy enough. After fixing this I discovered that the "catalog" code (probably unix name or name convention for internationalization) it was trying to load a file based on the LANG env var which obviously doesn't exist because I have removed the catalog directory completely. I disabled the catalog file loading with early return 1 in the loading function. I also left a TODO comment there to remember I need to clean it up since I won't be using it at all. If you are usig vi-like program you can speak english, let's be reasonable.</p>
+<p> I fixed the db problem. It was simply a change in the db_open API in db5. It needs now DB_CREATE flag. Easy enough. After fixing this I discovered that the "catalog" code (probably UNIX name or name convention for internationalization) it was trying to load a file based on the LANG env var which obviously doesn't exist because I have removed the catalog directory completely. I disabled the catalog file loading with early return 1 in the loading function. I also left a TODO comment there to remember I need to clean it up since I won't be using it at all. If you are using vi-like program you can speak English, let's be reasonable.</p>
 
 <h3>Sat  4 Jul 13:27:02 CEST 2020</h3>
 
-<p> I updated the <a href="">readme file in vip repo</a> recently, including a section with featrure ideas. Next day I randomly stumbled upon <a href="https://opensource.apple.com/source/vi/vi-7/nvi/docs/features.auto.html">Apple's notes on features ideas for nvi</a>. That's a good source of inspirations for features. In general I'm surprised that apple has nvi source code and it my come in useful in more ways then one.</p>
+<p> I updated the <a href="">read-me file in vip repo</a> recently, including a section with feature ideas. Next day I randomly stumbled upon <a href="https://opensource.apple.com/source/vi/vi-7/nvi/docs/features.auto.html">Apple's notes on features ideas for nvi</a>. That's a good source of inspirations for features. In general I'm surprised that apple has nvi source code and it my come in useful in more ways then one.</p>
 
 <h3>Fri  3 Jul 00:14:54 CEST 2020</h3>
 
 <p> I've finally finished removing all clutter from the vip's source code. From the original 612 files there are now only 172 files left. A whole lot less files to maintain and understand.</p>
 
-<p> My recent effort in migrating the codebase from inhouse regexp to the TRE library served me well as hoped. I started making changes in the actual code and got more confident with GDB and debugging. I feel I'm now ready to starting introducing new features. </p>
+<p> My recent effort in migrating the code-base from in-house regexp to the TRE library served me well as hoped. I started making changes in the actual code and got more confident with GDB and debugging. I feel I'm now ready to starting introducing new features. </p>
 
-<p> Before that however, there are still few bugs to iron out which appeard after all that clutter removal. Most noticable of which is the strange error about database each time I close vip. "BDB0635 DB_CREATE must be specified to create databases." it utters unashamed each time for goodbye. I suspect that's because Vip was using db3 before and now I made it use system's version which on my system is db5. Not a big deal, vip functions most of the time normaly. Still that's the first bug to fix.</p>
+<p> Before that however, there are still few bugs to iron out which appeared after all that clutter removal. Most noticeable of which is the strange error about database each time I close vip. "BDB0635 DB_CREATE must be specified to create databases." it utters unashamed each time for goodbye. I suspect that's because Vip was using db3 before and now I made it use system's version which on my system is db5. Not a big deal, vip functions most of the time normally. Still that's the first bug to fix.</p>
 
 <h3>Tue 30 Jun 23:18:48 CEST 2020</h3>
 
-<p> Grand success! After few days of banging my head on the widechar and regexp search problem I decided to test it in isolation. I created a simple program with few lines of c built it with gcc myself - just a new, super small project to test things out. I quickly realised that TRE supports widechar charters but not via standard regcomp() and regexec() api, it has regwcomp() and regwexec()! That was the key! I was feeding widecharacter strings to normal regex functions and they were getting confused. So I have now a functioning widechar version of vi using TRE for regexes!</p>
+<p> Grand success! After few days of banging my head on the wide char and regexp search problem I decided to test it in isolation. I created a simple program with few lines of c built it with gcc myself - just a new, super small project to test things out. I quickly realized that TRE supports wide char charters but not via standard regcomp() and regexec() api, it has regwcomp() and regwexec()! That was the key! I was feeding wide character strings to normal regex functions and they were getting confused. So I have now a functioning wide char version of vi using TRE for regexes!</p>
 
-<p> There is still the problem with missing support for REG_STARTEND which produces false postives in some lines and matches only the first occurance in the line (so "n" command doesn't jump to the next occurance in the same line) but I can emulate it with the idea I was talking about in the previous post. It's somewhat annoying but I can see now that's almost back to be 100% functioning.</p>
+<p> There is still the problem with missing support for REG_STARTEND which produces false positives in some lines and matches only the first occurrence in the line (so "n" command doesn't jump to the next occurrence in the same line) but I can emulate it with the idea I was talking about in the previous post. It's somewhat annoying but I can see now that's almost back to be 100% functioning.</p>
 
 <h3>Wed 24 Jun 23:33:16 CEST 2020</h3>
 
-<p> I managed to replace the glibc regex library with <a href="https://github.com/laurikari/tre">TRE</a>. There was only a single issue with compilation after replacing the library. The codebase is using non-POSIX REG_STARTEND regexec() flag. For now I just removed that flag. Other then that everything compiled flawlessly including the --enable-widechar compilation option.</p>
+<p> I managed to replace the glibc regex library with <a href="https://github.com/laurikari/tre">TRE</a>. There was only a single issue with compilation after replacing the library. The code-base is using non-POSIX REG_STARTEND regexec() flag. For now I just removed that flag. Other then that everything compiled flawlessly including the --enable-widechar compilation option.</p>
 
 <p> The executable seems to function normally. I can enter and see correct wide characters including ą and ł. However the search feature seems to be off. It seems to be matching only the first word in a line. I suspect it has something to do with that REG_STARTEND I removed.</p>
 
-<p> From what I could find out f_search() calls db_get() to load a line of text from the opened text file. As far as I can see db_get() copies the value of the line onto one of the arguemnts it receives without cleaning this argument first so lines often look like current line was just pasted on top of the last line. I presume that was done in the name of performance and is relaying on that REG_STARTEND flag.</p>
+<p> From what I could find out f_search() calls db_get() to load a line of text from the opened text file. As far as I can see db_get() copies the value of the line onto one of the arguments it receives without cleaning this argument first so lines often look like current line was just pasted on top of the last line. I presume that was done in the name of performance and is relaying on that REG_STARTEND flag.</p>
 
-<p> I am not entirely sure but I suspect if I can emulate the REG_STARTEND behaviour I can fix the search but it's a gamble - I am not 100% sure what is actually going on. Anyway the "cleverest" idea I had on how to emulate REG_STARTEND was to just clean the line variable so that regexec() is operating on a clean line each time.</p>
+<p> I am not entirely sure but I suspect if I can emulate the REG_STARTEND behavior I can fix the search but it's a gamble - I am not 100% sure what is actually going on. Anyway the "cleverest" idea I had on how to emulate REG_STARTEND was to just clean the line variable so that regexec() is operating on a clean line each time.</p>
 
 <h3>Tue 23 Jun 20:19:02 CEST 2020</h3>
 
-<p> Yesterday it was really late when I was investigating f_search(). I realised that I saw in GDB a value for a string that was presented by GDB as L"some string" because it was a wide char string. It seems that nvi keeps all strings as wide characters when --enable-widechar compilation options is used. </p>
+<p> Yesterday it was really late when I was investigating f_search(). I realized that I saw in GDB a value for a string that was presented by GDB as L"some string" because it was a wide char string. It seems that nvi keeps all strings as wide characters when --enable-widechar compilation options is used. </p>
 
 <p> I now think that f_search() or re_compile() or re_conv() or any other function is not the root cause of the problem. The problem is that all strings are wide, as in each character takes 16 bits while the regex expects 8 bits only, there is nothing I can do about it other then disable widechars therefor changing the memory alignment back to 8 bits per character like regex expects or change the regex library to one that supports wide character strings. Well I could also try to "flatten" the wide strings to normal strings just when they are fed to the regexec() function, but those kind of hacky solutions often tax you increasingly the further you go.</p>
 
-<p> I'm not sure if disabling the widechars is a viable options. Theoretically I could disable the widechars and make the entire system operate on 8 bit strings while enabling widechar curses library so that it can still render wide characters correctly in the terminal. That seems plausable, however I'm not sure how will the system behave when moving cusor around a wide character. Assuming that this idea would work, lets say we have a string "hello Micha|ł" where | is the cursor. If I have 8 bit string and 16 bit curses library, what happens if I move the cursor one character to the right now? Have I moved 8 bit or 16 bit? And if I moved 8 bit is my cursor "inside" the "ł" from the perspective of curses library? That could prove problematic. However if this would just work, it would be the simplest solution, so it's still tempting to investigate it.</p>
+<p> I'm not sure if disabling the wide chars is a viable options. Theoretically I could disable the wide chars and make the entire system operate on 8 bit strings while enabling wide char curses library so that it can still render wide characters correctly in the terminal. That seems plausible, however I'm not sure how will the system behave when moving cursor around a wide character. Assuming that this idea would work, lets say we have a string "hello Micha|ł" where | is the cursor. If I have 8 bit string and 16 bit curses library, what happens if I move the cursor one character to the right now? Have I moved 8 bit or 16 bit? And if I moved 8 bit is my cursor "inside" the "ł" from the perspective of curses library? That could prove problematic. However if this would just work, it would be the simplest solution, so it's still tempting to investigate it.</p>
 
-<p> The other option is to replace the libc's regex library with some other "mostly compatible" library which supports wide characters. I say "mostly compatible" because I found out yesterday that nvi does some light processing on the regex pattern before compiling it in re_conv(). So whatever library I choose should have regex syntax similiar enough so that I don't need to change re_conv() too much. I found following candidates:</p>
+<p> The other option is to replace the libc's regex library with some other "mostly compatible" library which supports wide characters. I say "mostly compatible" because I found out yesterday that nvi does some light processing on the regex pattern before compiling it in re_conv(). So whatever library I choose should have regex syntax similar enough so that I don't need to change re_conv() too much. I found following candidates:</p>
 
 <ul>
-<li>PCRE - perl's regex library, widly popular library and syntax, mostly superset for libc's regex syntax</li>
+<li>PCRE - perl's regex library, widely popular library and syntax, mostly super-set for libc's regex syntax</li>
 <li>TRE - <a href="https://github.com/martanne/vis">vis editor</a> is using that under the hood</li>
 <li>RE2 - a regex library from google, seems quite popular as well</li>
 <li>Plan9's regexp - I heard good things about regexes in Plan9</li>
 </ul>
 
-<p> Also I noticed that TRE for Vis is optional and when not used Vis uses <regex.h> I wonder how they solved it. I heard that Vis uses musl insatead of glibc. I just checked and musl's regexp is based on TRE, so it's possible that vis has widechar support either way because it uses directly or indirectly TRE.</p>
+<p> Also I noticed that TRE for Vis is optional and when not used Vis uses <regex.h> I wonder how they solved it. I heard that Vis uses musl instead of glibc. I just checked and musl's regexp is based on TRE, so it's possible that vis has wide char support either way because it uses directly or indirectly TRE.</p>
 
 <h3>Tue 23 Jun 00:12:27 CEST 2020</h3>
 
-<p> It seems like the search results in random positions even when there is no wide characters in searched file. Anyway I briefly checked out f_search(), interanlly executes regexec(). From what I found regexec does not support wide chars so that's potentially the issue but rather unlikely due to the symptopm I mentioned above. But before it calls regexec() it does a bunch of initalisation work: it calls search_init() which calles re_compile() which calls re_conv(). Apparently nvi translates for "vi regexp" to the POSIX regexp. I actually thought vi used POSIX regex syntax directly. And it pretty much does, this re_conv() function just supports the the magic characters and \<ptrn\> literal patterns (not sure what are those patterns atm).</p>
+<p> It seems like the search results in random positions even when there is no wide characters in searched file. Anyway I briefly checked out f_search(), internally executes regexec(). From what I found regexec does not support wide chars so that's potentially the issue but rather unlikely due to the symptom I mentioned above. But before it calls regexec() it does a bunch of initialization work: it calls search_init() which calls re_compile() which calls re_conv(). Apparently nvi translates for "vi regexp" to the POSIX regexp. I actually thought vi used POSIX regex syntax directly. And it pretty much does, this re_conv() function just supports the the magic characters and \<ptrn\> literal patterns (not sure what are those patterns atm).</p>
 
 <h3>Sun 21 Jun 23:49:08 CEST 2020</h3>
 
 <p> v_exaddr() eventuall calls f_search() too. Well not directly, v_exaddr() actually calls ex_range() which calls ex_line() which calls f_search(). Point is, all roads lead to f_search. I think my next step will be to investigate how f_search actually works and if it's broken with compile flag --enabled-widechar.</p>
 
-<p> I figured out the above using GDB. GDB is kind of a complex program but it does have some really nice quality of life features built in which allow me to use it without first reading the extensive info gdb manual. The help command is amaizing it lets me pretty much figure things out one the go.</p>
+<p> I figured out the above using GDB. GDB is kind of a complex program but it does have some really nice quality of life features built in which allow me to use it without first reading the extensive info gdb manual. The help command is amazing it lets me pretty much figure things out one the go.</p>
 
-<p> Oh and I updated my homepage, I refreshed and used my old experimental project with react rendering 3D html billbords via css transformations using three-js for 3d perspective calculations. It's quite fun I can make gifs and text and emojis and everything else html can do in 3D spin around. I'm thinking I should capitalize on this technology and make my real homepage based on that. It's visually quite impressive for uninitated and technically interesting since it intentionally avoids webgl (thus can exploit all rendering capacities of standard html browser renderer).</p>
+<p> Oh and I updated my homepage, I refreshed and used my old experimental project with react rendering 3D html billboards via CSS transformations using three-js for 3d perspective calculations. It's quite fun I can make gifs and text and emojis and everything else HTML can do in 3D spin around. I'm thinking I should capitalize on this technology and make my real homepage based on that. It's visually quite impressive for uninitiated and technically interesting since it intentionally avoids webgl (thus can exploit all rendering capacities of standard HTML browser renderer).</p>
 
 <h3>Sat 20 Jun 14:30:53 CEST 2020</h3>
 
@@ -184,18 +190,18 @@
 <li>For the time being I'll still support <a href="https://pyzozord.github.io/blog/">https://pyzozord.github.io/blog/</a> but I think I'll drop it eventually.</li>
 </ul>
 
-<p> Since we are nowhere near the subject I want to take this oportunity to remind myself of the following distinction. Why not, my blog, my rules.</p>
+<p> Since we are nowhere near the subject I want to take this opportunity to remind myself of the following distinction. Why not, my blog, my rules.</p>
 
 <ul>
 <li>"command line" - Is a way to describe computer interface which operates only on text entered commands</li>
 <li>"shell" - Is a part of unix architecture for command line</li>
-<li>"terminal" - Those were old computer devices eralier models reassembled typewriters, later models had CRT screens</li>
+<li>"terminal" - Those were old computer devices earlier models reassembled typewriters, later models had CRT screens</li>
 <li>"terminal emulator" - Is computer software emulating a terminal device connected to a shell</li>
 </ul>
 
 <h3>Wed 17 Jun 21:52:38 CEST 2020</h3>
 
-<p> I noticed that the same searching bug happens in both vi and ex modes, if the authors of nvi had any kind of common sense there is probably a piece of code uses by both vi and ex that performs the actual search. Opensource developers are generally really skilled so I think it's safe to assume that.</p>
+<p> I noticed that the same searching bug happens in both vi and ex modes, if the authors of nvi had any kind of common sense there is probably a piece of code uses by both vi and ex that performs the actual search. Open source developers are generally really skilled so I think it's safe to assume that.</p>
 
 <p> I noticed in that vi actually uses ex's address routines for its search feature. All functions in /vi/v_search.c eventually directly or indirectly call v_exaddr(). I'm pretty sure what I am looking for is not in the /vi/ directory.</p>
 
@@ -203,19 +209,19 @@
 
 <h3>Sat 13 Jun 23:59:45 CEST 2020</h3>
 
-<p> Removing /regex is more dificult then I hoped. The autoconf script has --disable-re flag which basically makes the build ignore all code in /regex and link to system's regex.h instead which is great. However after it builds without too much compaining (single use of one non-standard flag REG_NOSPEC) the resulting binary behaves strange. Ctrl+a command results in "RE error: Invalid character class name". </p>
+<p> Removing /regex is more difficult then I hoped. The autoconf script has --disable-re flag which basically makes the build ignore all code in /regex and link to system's regex.h instead which is great. However after it builds without too much complaining (single use of one non-standard flag REG_NOSPEC) the resulting binary behaves strange. Ctrl+a command results in "RE error: Invalid character class name". </p>
 
-<p> But that's not all, the biggest problem is when I use another autoconf script flag --enable-widechar. When I don't use that option I can't type in polish characters example for "polish a": "ą". And if I do use --enable-widechar I can type "polish a" normally "ą", but the / search feature yilds random results it matches arbitrary places in the file.</p>
+<p> But that's not all, the biggest problem is when I use another autoconf script flag --enable-widechar. When I don't use that option I can't type in polish characters example for "polish a": "ą". And if I do use --enable-widechar I can type "polish a" normally "ą", but the / search feature yields random results it matches arbitrary places in the file.</p>
 
-<p> I don't exactly nderstand why the regex library bundled with nvi source works properly and the gnu regex library does not. From what I found out both POSIX's and GNU clib's regcomp() don't support widecharacter strings. I couldn't find any information on BSD's regcomp(). Does it support widechars? If it doesn't what makes it work properly while gnu's doesn't?</p>
+<p> I don't exactly understand why the regex library bundled with nvi source works properly and the gnu regex library does not. From what I found out both POSIX's and GNU clib's regcomp() don't support wide character strings. I couldn't find any information on BSD's regcomp(). Does it support widechars? If it doesn't what makes it work properly while gnu's doesn't?</p>
 
-<p> I don't really know what I am talking about or how characters are really actually handled in C. I know that standard ASCII and POSIX characters are 8 bit (actually 7 bit, last bit is not used) and therefor can encode english alphanumerics and few extra symbols. UTF8 is what's called "variable length encoding" which means that most common characters are encoded in 1 byte like ASCII less common characters in 2 bytes and so on up to 4 bytes. There are also "widechar" strings in C which seems to be a different name for UTF16 which is kind of like UTF8, also "variable length" however it consists of one or two 16 bit codes (as opposed to UTF8's one up to four 8 bit codes). </p>
+<p> I don't really know what I am talking about or how characters are really actually handled in C. I know that standard ASCII and POSIX characters are 8 bit (actually 7 bit, last bit is not used) and therefor can encode English alphanumerics and few extra symbols. UTF8 is what's called "variable length encoding" which means that most common characters are encoded in 1 byte like ASCII less common characters in 2 bytes and so on up to 4 bytes. There are also "widechar" strings in C which seems to be a different name for UTF16 which is kind of like UTF8, also "variable length" however it consists of one or two 16 bit codes (as opposed to UTF8's one up to four 8 bit codes). </p>
 
 <h3>Wed 10 Jun 23:10:16 CEST 2020</h3>
 
-<p> My <a href="https://github.com/pyzozord/vip">nvi fork project</a> is making steady progress. I decided to name it VIP, I'm quite enjoying all the potential expansions of the acronym. Vi by Pyzozord (my IRC nickname), Very Important Program, VI with Plugins, VI Perfected. The possibilites are endless.</p>
+<p> My <a href="https://github.com/pyzozord/vip">nvi fork project</a> is making steady progress. I decided to name it VIP, I'm quite enjoying all the potential expansions of the acronym. Vi by Pyzozord (my IRC nickname), Very Important Program, VI with Plugins, VI Perfected. The possibilities are endless.</p>
 
-<p> Anyway I managed to remove even more stuff: catalog - responsible for translations, clib - no need to support environemnts who don't have full c library, db - no need to maintain source for that, instead I'm using now libdb and ip/ipc - no need to worry about inter process communication for now, I have a specyfic idea for how I want the plugin system to work.</p>
+<p> Anyway I managed to remove even more stuff: catalog - responsible for translations, clib - no need to support environments who don't have full c library, db - no need to maintain source for that, instead I'm using now libdb and ip/ipc - no need to worry about inter process communication for now, I have a specific idea for how I want the plugin system to work.</p>
 
 <p> Hopefully I can remove regexp, ideally I don't want to maintain regular expression engine and just link statically a regexp library available on the system.</p>
 
@@ -223,41 +229,41 @@
 
 <p> In fact I'm actually writing this post in the latest build of vip, there is virtually no difference what so ever comparing to the normal nvi.</p>
 
-<p> After vip will be usable enough, the next step will be to make my own terminal emulator. I want something extremly simple. But I do want media playback in the background. I want my terminal to be able to display images and videos in the background and adjust solid color overlay so forground text is still readable. I'm eyeballing the <a href="http://st.suckless.org">suckless terminal</a>. It's based on Xorg but maybe I could migrate it to SDL so that I can compile it on mac? It's quite great, really lean code, still well supported and plenty of extra features I can add via code patches.</p>
+<p> After vip will be usable enough, the next step will be to make my own terminal emulator. I want something extremely simple. But I do want media playback in the background. I want my terminal to be able to display images and videos in the background and adjust solid color overlay so foreground text is still readable. I'm eyeballing the <a href="http://st.suckless.org">suckless terminal</a>. It's based on Xorg but maybe I could migrate it to SDL so that I can compile it on mac? It's quite great, really lean code, still well supported and plenty of extra features I can add via code patches.</p>
 
 <p> Writing code in my own code editor inside my own terminal emulator... Finally at peace.</p>
 
-<p> Can't wait for those looks in the eyes of collegues who asked "What terminal are you using?" or "Your Vi looks quite strange, how did you do that?".</p>
+<p> Can't wait for those looks in the eyes of colleagues who asked "What terminal are you using?" or "Your Vi looks quite strange, how did you do that?".</p>
 
 <h3>Sun 24 May 15:52:27 CEST 2020</h3>
 
-<p> Since firday I've been reading the <a href="https://repo.or.cz/nvi.git">nvi repo</a>. I decided writing my own editor in c is the best way to refresh my c-fu. It's been quite educative and definetly a history lesson of open source software development. I've cloned it and started removing features I'm not interested in like perl/tcl support or gtk/motif versions. </p>
+<p> Since Friday I've been reading the <a href="https://repo.or.cz/nvi.git">nvi repo</a>. I decided writing my own editor in c is the best way to refresh my c-fu. It's been quite educative and definitely a history lesson of open source software development. I've cloned it and started removing features I'm not interested in like perl/tcl support or gtk/motif versions. </p>
 
-<p> I'm very excited. Vim is too much. It took me a decade to get familiar with it and I still don't know more then a half of it. Ed is too simplistic, support for autoindentation is a must in 2020, same with tab/space indentaion conversion. Vi is almost perfect, but I still miss some quiality of life features from vim. I think the perfect editor for me is somewhere between vi and vim. </p>
+<p> I'm very excited. Vim is too much. It took me a decade to get familiar with it and I still don't know more then a half of it. Ed is too simplistic, support for auto indentation is a must in 2020, same with tab/space indentation conversion. Vi is almost perfect, but I still miss some quality of life features from vim. I think the perfect editor for me is somewhere between vi and vim. </p>
 
 <p> I also have my own ideas on how to improve it. </p>
 
 <p> I want to implement Plan9's Structural Regular Expressions like they did in <a href="https://github.com/martanne/vis">vis</a>. Also I had some ideas about a new mode for vi editor which also operates on objects and motions but they are ast objects and motions instead of word objects and motions. And finally I'd like to have scripting support for any and all languages. </p>
 
-<p> I don't want to have built in interpreter for perl or lua or nodejs. Instead I'd like to leverage posix process communication (maybe pipes?) so that users can write scripts in any and all languages they like extremly easily. If you want to add a new word object you can do it in a simple php program which just uses standard input and output to communicate with VIP. Or any other language for that matter. Or add entirly new editing mode. I want the scripting to be based on standard basic posix features, extremly easy to implement (so that a developer with less then 6 months of experience could extend VIP however they want) and extremly powerful (so that scripting can change virtually any aspect of how Vip works). Lofty dreams I know.</p>
+<p> I don't want to have built in interpreter for perl or lua or nodejs. Instead I'd like to leverage posix process communication (maybe pipes?) so that users can write scripts in any and all languages they like extremely easily. If you want to add a new word object you can do it in a simple php program which just uses standard input and output to communicate with VIP. Or any other language for that matter. Or add entirely new editing mode. I want the scripting to be based on standard basic posix features, extremely easy to implement (so that a developer with less then 6 months of experience could extend VIP however they want) and extremely powerful (so that scripting can change virtually any aspect of how Vip works). Lofty dreams I know.</p>
 
 <p> <a href="https://github.com/pyzozord/vip">https://github.com/pyzozord/vip</a></p>
 
 <h3>Mon  4 May 12:18:35 CEST 2020</h3>
 
-<p> My interest are in few things and those things seem to naturally intertwine and connect with each other in a complex, folded many times over manner. Every time I learn something new	on the edge of my area of interest I discover entirly new locus of meaning which connects in new, surprising and complex ways with the existing body of knoweledge making the entire model even more convoluted. I developed an interest in systems via programming. There are many differnt systems at different levels. On other such system is social dynamics in professional context. And generally in any context. Recently I came across the Gervais Principle. It's an amazing, engineering model of social dynamics of comercial organisations. </p>
+<p> My interest are in few things and those things seem to naturally intertwine and connect with each other in a complex, folded many times over manner. Every time I learn something new	on the edge of my area of interest I discover entirely new locus of meaning which connects in new, surprising and complex ways with the existing body of knowledge making the entire model even more convoluted. I developed an interest in systems via programming. There are many different systems at different levels. On other such system is social dynamics in professional context. And generally in any context. Recently I came across the Gervais Principle. It's an amazing, engineering model of social dynamics of commercial organizations. </p>
 
 <p> <a href="https://www.ribbonfarm.com/the-gervais-principle/">https://www.ribbonfarm.com/the-gervais-principle/</a></p>
 
-<p> I am in shock. It made me understand so many before unexplainable evenets I have experienced. I was intuitively half aware of some small partion of this model, but having it all layed out like that clearly and comprehensively opens my eyes. At first I was furious. I felt cheated like a complete idiot. I was the Clueless. I have now wide open manuvering field. I just need to decide what I want. (This last part may be more difficult then it sounds)</p>
+<p> I am in shock. It made me understand so many before inexplicable evenest I have experienced. I was intuitively half aware of some small portion of this model, but having it all laid out like that clearly and comprehensively opens my eyes. At first I was furious. I felt cheated like a complete idiot. I was the Clueless. I have now wide open maneuvering field. I just need to decide what I want. (This last part may be more difficult then it sounds)</p>
 
 <h4>Tue Mar  3 21:42:30 CET 2020</h4>
 
-<p> I've been spending some time exploring OpenBSD, pretty cool stuff. I am thinking about migrating to OpenBSD full time. I think I'm naturally aligned with the philosphy behind it. From my experience a well fit symbiosis like this brings unexpected desirable results. Things just click together in places one wouldn't expect.</p>
+<p> I've been spending some time exploring OpenBSD, pretty cool stuff. I am thinking about migrating to OpenBSD full time. I think I'm naturally aligned with the philosophy behind it. From my experience a well fit symbiosis like this brings unexpected desirable results. Things just click together in places one wouldn't expect.</p>
 
-<p> I've been also migrating from Vim to Vi. I had a brief episode with Ed but quickly discovered I do need a little more then that (auto ident was the thing that pushed me over the edge). So now I'm on Ex and the Vi. I first started with Ex-Vi (the traditional ex and vi) but today I moved on to the little cleaned up and just a bit bigger Nvi. Nvi is fully "bug-to-bug" compatible with ex-vi, but has got few extra features. It's also the default version of vi on BSD systems including OpenBSD.</p>
+<p> I've been also migrating from Vim to Vi. I had a brief episode with Ed but quickly discovered I do need a little more then that (auto indentation was the thing that pushed me over the edge). So now I'm on Ex and the Vi. I first started with Ex-Vi (the traditional ex and vi) but today I moved on to the little cleaned up and just a bit bigger Nvi. Nvi is fully "bug-to-bug" compatible with ex-vi, but has got few extra features. It's also the default version of vi on BSD systems including OpenBSD.</p>
 
-<p> Lastly I made more progress with my genetic algorithm. I further improved the graph visualisation. First of all I ordered each individual in a generation from highest to lowest fitness. When the graph displayes all generations it's now easily visible how one outstanding individual in generation X breeds into 90% of the population X+3. This help me understand <em>why</em> is my algorithm not finishing. I believe that my populations become to monotonous, having mostly identical DNA. I am thinking now about improving the breeding processes from random to a weighted random. Individuals will prefer other individuals with fitnessess that complement theirs as breeding partners. This is pretty exciting, it may be the solution! And I haven't even got to counting schemata. I think if I'm lucky enough I may not have to implement counting schemata for breeding preference, very simple difference in fitnesses may be enough!</p>
+<p> Lastly I made more progress with my genetic algorithm. I further improved the graph visualization. First of all I ordered each individual in a generation from highest to lowest fitness. When the graph displays all generations it's now easily visible how one outstanding individual in generation X breeds into 90% of the population X+3. This help me understand <em>why</em> is my algorithm not finishing. I believe that my populations become to monotonous, having mostly identical DNA. I am thinking now about improving the breeding processes from random to a weighted random. Individuals will prefer other individuals with fitness's that complement theirs as breeding partners. This is pretty exciting, it may be the solution! And I haven't even got to counting schemata. I think if I'm lucky enough I may not have to implement counting schemata for breeding preference, very simple difference in finesses may be enough!</p>
 
 <h4>Sat Feb 22 15:12:15 CET 2020</h4>
 
@@ -275,45 +281,45 @@
 
 <p> <code></code><code> function scout() {   for F in ${@-./*}; do echo "$(find $F | wc -l) $F"; done | sort -r } </code><code></code></p>
 
-<p> Ugh, I see need to fix my blog markdown parser so it doesn't mess with code blocks or inside html tags.</p>
+<p> Ugh, I see need to fix my blog markdown parser so it doesn't mess with code blocks or inside HTML tags.</p>
 
 <h4>Space Partitioning - Sun Feb 16 10:03:46 CET 2020</h4>
 
-<p> I've been thinking a bit more recently about infinite game worlds and roguelike games. I found a very interesting free book http://gameprogrammingpatterns.com/. It has a chapter about spatial partitioning which is exactly what I was interested in. Unfortunately that chapter is very fundamental and does not answer my question. It did give me few ideas though.</p>
+<p> I've been thinking a bit more recently about infinite game worlds and rogue-like games. I found a very interesting free book http://gameprogrammingpatterns.com/. It has a chapter about spatial partitioning which is exactly what I was interested in. Unfortunately that chapter is very fundamental and does not answer my question. It did give me few ideas though.</p>
 
 <p> My goal would be to have an infinitely big, persistent world. The game would not have to simulate every single agent in the entire world on every game loop tick. That would be silly. It would simulate only the agents within the view of the player. All other agents instead of being simulated separately would be rather kind of reduced to a "heat map of probabilities" in a similar way GTA or SimCity games do with cellular automata layers. But even in that case there would be static objects which don't require processing every tick but do require being remembered separately. For example if I'd kill a deer and then left that area to gather wood for a bonfire, I would expect the deer's corpse to still be there when I return.</p>
 
-<p> I can imagine a simple 1 dimensional array with a list of all objects in the world. Such a list would be really long so I would be able to load only chunks of it at a time. How do I know which chunks to load? I should load only relevant chunks so onces that are near the player or in the player's view.  Well if I care about the chunks of the list of game objects in a spatial sense (only chunks <em>close to</em> the player) than I should assign some spatial information to those chunks (aka index them). All fine so far, lets say our chunks are laid out on a grid of 16x16 "meters" and each chunk can hold any number of objects. Not ideal for very densely populated areas but let's ignore this problem for now and continue.</p>
+<p> I can imagine a simple 1 dimensional array with a list of all objects in the world. Such a list would be really long so I would be able to load only chunks of it at a time. How do I know which chunks to load? I should load only relevant chunks so once that are near the player or in the player's view.  Well if I care about the chunks of the list of game objects in a spatial sense (only chunks <em>close to</em> the player) than I should assign some spatial information to those chunks (aka index them). All fine so far, lets say our chunks are laid out on a grid of 16x16 "meters" and each chunk can hold any number of objects. Not ideal for very densely populated areas but let's ignore this problem for now and continue.</p>
 
 <p> Knowing chunk's size and x, y coordinates of the chunk I want I can easily calculate the position of that chunk in the file and load it into memory. Great! Eureka! I can go home. But what if usually there will be big number of chunks processed at once? I'd need to do IO file operation for many of the chunks I want to load. Is there any way I could pack and order those chunks in a file to minimize IO operations when reading them? </p>
 
-<p> From a simple calculation we can guestimate how long an average io operation takes on a HDD. Lets assume a 7200 RPM HDD (120 RPS) with average seek time 8ms. RPM stands for "revolutions per minute" or simply rotations per minute. To read data from a spinning disk HDD has to move the head (the needle) to the right position and then wait up to 1 full rotation. Ignoring time for the cpu overhead we can say that 8ms seek + rotational latency (1s / 120rps = ~8ms) is 16ms for a single read. Simply reading a big file in continuous fashion will generate multiple io operations. Naturally seeking to neighbour tracks will be much faster than changing a cylinder and our guestimate is generally really rough. But for our purposes knowing the order of magnitude should be enough. You can read more here https://en.wikipedia.org/wiki/Hard_disk_drive_performance_characteristics.</p>
+<p> From a simple calculation we can guesstimate how long an average IO operation takes on a HDD. Lets assume a 7200 RPM HDD (120 RPS) with average seek time 8ms. RPM stands for "revolutions per minute" or simply rotations per minute. To read data from a spinning disk HDD has to move the head (the needle) to the right position and then wait up to 1 full rotation. Ignoring time for the CPU overhead we can say that 8ms seek + rotational latency (1s / 120rps = ~8ms) is 16ms for a single read. Simply reading a big file in continuous fashion will generate multiple IO operations. Naturally seeking to neighbor tracks will be much faster than changing a cylinder and our guesstimate is generally really rough. But for our purposes knowing the order of magnitude should be enough. You can read more here https://en.wikipedia.org/wiki/Hard_disk_drive_performance_characteristics.</p>
 
-<p> I looked into few different ideas on how to index and encode the chunks on wikipidia https://en.wikipedia.org/wiki/Spatial_database#Spatial_index and that game programming book http://gameprogrammingpatterns.com/spatial-partition.html.</p>
+<p> I looked into few different ideas on how to index and encode the chunks on Wikipedia https://en.wikipedia.org/wiki/Spatial_database#Spatial_index and that game programming book http://gameprogrammingpatterns.com/spatial-partition.html.</p>
 
 <p> https://sites.cs.ucsb.edu/~suri/psdir/ASP.pdf</p>
 
-<p> <strong>Binary Trees</strong> While thinking about ways I could encode the coordinates in a file I arrived at Binary Trees. Not exactly a spatial data structure. Rather a fundamental computer data structure. Idea is simple a set of values is recursively divided into two subsets. Left set holds values smaller then the division point, right set holds values bigger then the division point. Only leaf nodes (nodes without children) of the tree hold actual po. There is many different permutations of that idea and there are many different considerations. Balancing the tree is often one of the big concerns.</p>
+<p> <strong>Binary Trees</strong> While thinking about ways I could encode the coordinates in a file I arrived at Binary Trees. Not exactly a spatial data structure. Rather a fundamental computer data structure. Idea is simple a set of values is recursively divided into two subsets. Left set holds values smaller then the division point, right set holds values bigger then the division point. Only leaf nodes (nodes without children) of the tree hold actual position. There is many different permutations of that idea and there are many different considerations. Balancing the tree is often one of the big concerns.</p>
 
 <p> <strong>B-Trees</strong></p>
 
-<p> After Binary Trees I skipped over the binary heaps, binomail heaps and priority queues. Then I found B-Trees (https://queue.acm.org/detail.cfm?id=1814327). Simply put, B-Trees are a lot like Binary Trees but can have <em>m</em> max children (rather then 2) and are designed such that really large trees can be kept in storage and only part of the tree is loaded to memory at any moment. Similar indexes are paged in and out of memory together. That minimises the amount of memory (and io) operations For some reason I got inspired to check if MySQL uses B-trees, and it does. Then I saw that MySql uses R-Trees for spatial indexes. Then my head started spinning, I'm in over my head.</p>
+<p> After Binary Trees I skipped over the binary heaps, binomial heaps and priority queues. Then I found B-Trees (https://queue.acm.org/detail.cfm?id=1814327). Simply put, B-Trees are a lot like Binary Trees but can have <em>m</em> max children (rather then 2) and are designed such that really large trees can be kept in storage and only part of the tree is loaded to memory at any moment. Similar indexes are paged in and out of memory together. That minimizes the amount of memory (and IO) operations For some reason I got inspired to check if MySQL uses B-trees, and it does. Then I saw that MySQL uses R-Trees for spatial indexes. Then my head started spinning, I'm in over my head.</p>
 
 <p> <strong>Grid</strong></p>
 
-<p> But first Grid. Grid is the simples solution to my problem. Divide the world into equal size chunks with X and Y coordinates. Keep each chunk saved as a separate file is enough. Since this project is educational for me and I want to wet my feet in a bit in algorithms and data structures and the techniques similar to those used in the 3D engines I decided I still want to implement something more complex. To make it more challenging I decided I want my game to also support polygons. In case of grid it's quite easy to just cut the polygons at the chunk edges.</p>
+<p> But first Grid. Grid is the simplest solution to my problem. Divide the world into equal size chunks with X and Y coordinates. Keep each chunk saved as a separate file is enough. Since this project is educational for me and I want to wet my feet in a bit in algorithms and data structures and the techniques similar to those used in the 3D engines I decided I still want to implement something more complex. To make it more challenging I decided I want my game to also support polygons. In case of grid it's quite easy to just cut the polygons at the chunk edges.</p>
 
 <p> <strong>Space filling curves</strong></p>
 
-<p> Space filling curves like Hilbert Curve are very interest and simple. It would certainly help save the chunks in a file in a more "streamable" fashion since the Hilbert curve makes the file bit stream more chunky and area like instead of having acontinuous horizontal line of the entire world. It would probably decrease amount of io needed to load the right chunks from the memory.</p>
+<p> Space filling curves like Hilbert Curve are very interest and simple. It would certainly help save the chunks in a file in a more "stream-able" fashion since the Hilbert curve makes the file bit stream more chunky and area like instead of having a continuous horizontal line of the entire world. It would probably decrease amount of IO needed to load the right chunks from the memory.</p>
 
 <p> <strong>BSP Trees</strong></p>
 
 <p> Binary Space Partitioning Trees are famous. They were used in the 90s for most of the 3D games, most notably Doom. It recursively subdivides the space into two convex spaces using hyperplanes as partitions.</p>
 
-<p> <strong>Quadtrees</strong></p>
+<p> <strong>Quad trees</strong></p>
 
-<p> Next are quadtrees. I know quadtrees or more specifically octrees are commonly used in the 3D video game industry. If I'm not mistaken leading occlusion culling software Umbra3D (used by such games as DOOM 2016 or Witcher 3) uses octrees as foundation for their algorithm. My first thought about quadtrees is that they share a lot with the hilbert curve. It seems like a quadtree could be encoded using hilbert curve. Quadtrees are also a special case of a BSP Tree.</p>
+<p> Next are quad trees. I know quad trees or more specifically octrees are commonly used in the 3D video game industry. If I'm not mistaken leading occlusion culling software Umbra3D (used by such games as DOOM 2016 or Witcher 3) uses octrees as foundation for their algorithm. My first thought about quad trees is that they share a lot with the Hilbert curve. It seems like a quad tree could be encoded using Hilbert curve. Quad trees are also a special case of a BSP Tree.</p>
 
 <p> <strong>K-d tree</strong></p>
 
@@ -321,21 +327,21 @@
 
 <p> <strong>R-trees</strong></p>
 
-<p> Wikipedia entry on r-trees is promising. They have native support for polygons and were specifically design for large datasets that cannot be kept entirely in memory and have to be paged in and out of ram from disk. seems like r-trees generally have faster lookups and quadtrees are faster to build, interesting trade off. Another interesting fact about r-trees is that they use MBR (minimal bounding rectangles) which means I can have the top level of the tree spanning entire galaxy and immediate next level really small for example 16 square meters. That means no unnecessary subdivisions and index tree branches in a galaxy where only fraction of one percent has been generated.</p>
+<p> Wikipedia entry on r-trees is promising. They have native support for polygons and were specifically design for large data sets that cannot be kept entirely in memory and have to be paged in and out of ram from disk. seems like r-trees generally have faster lookups and quad trees are faster to build, interesting trade off. Another interesting fact about r-trees is that they use MBR (minimal bounding rectangles) which means I can have the top level of the tree spanning entire galaxy and immediate next level really small for example 16 square meters. That means no unnecessary subdivisions and index tree branches in a galaxy where only fraction of one percent has been generated.</p>
 
-<p> <strong>Geohash</strong></p>
+<p> <strong>Geo hash</strong></p>
 
-<p> Geohash approach seems very similar to the Grid but it has few interesting properties on it's own. Geohash has a single hash code value, not a coordinate pair like the Grid. Arbitrary precision of coordinates and gradual loss of precising while removing characters from the end of the hash code could come in useful. This also results with places nearby presenting similar hash code prefix. This naturally leads to indexing the hashes, B-Tree would be ideal. The hash code itself is a base 32 encoded interleaved pair of binary indexes for coordinates. Pretty smart.</p>
+<p> Geo hash approach seems very similar to the Grid but it has few interesting properties on it's own. Geo hash has a single hash code value, not a coordinate pair like the Grid. Arbitrary precision of coordinates and gradual loss of precising while removing characters from the end of the hash code could come in useful. This also results with places nearby presenting similar hash code prefix. This naturally leads to indexing the hashes, B-Tree would be ideal. The hash code itself is a base 32 encoded interleaved pair of binary indexes for coordinates. Pretty smart.</p>
 
-<p> Honestly half way through this research I got bored with it and with making a roguelike anyway. If I'd follow through I'd probably go for a combination of Geohash, Grid and Hilbert Curve. Geohash would allow arbitrary sizes, allowing entire galaxy of meters. Grid is the simple partitioning algorithm and can be encoded directly in geohash and Hilbert Curve is a nice packing algorithm to order grid cells and save on disk to be streamed to memory later.</p>
+<p> Honestly half way through this research I got bored with it and with making a rogue-like anyway. If I'd follow through I'd probably go for a combination of Geo hash, Grid and Hilbert Curve. Geo hash would allow arbitrary sizes, allowing entire galaxy of meters. Grid is the simple partitioning algorithm and can be encoded directly in rehash and Hilbert Curve is a nice packing algorithm to order grid cells and save on disk to be streamed to memory later.</p>
 
-<p> I am really happy I did this research, I've learned a decent chunk of algorithms and data structures and feel much more confident now about my understanding how games organise space and implement open worlds.</p>
+<p> I am really happy I did this research, I've learned a decent chunk of algorithms and data structures and feel much more confident now about my understanding how games organize space and implement open worlds.</p>
 
 <h4>Tue Feb  4 00:58:57 CET 2020</h4>
 
-<p> Another quick update. I just felt inspired and decided to add html template to my blog so I can make shorter lines and longer line spacing. Looks much better now! Also fixed the post ordering so post 10 doesn't show immidiately after post 1 but rather after post 1. And reversed the order so the latest post is at the top.</p>
+<p> Another quick update. I just felt inspired and decided to add HTML template to my blog so I can make shorter lines and longer line spacing. Looks much better now! Also fixed the post ordering so post 10 doesn't show immediately after post 1 but rather after post 1. And reversed the order so the latest post is at the top.</p>
 
-<p> P.S. still worknig on that entry about spatial partitioning.</p>
+<p> P.S. still working on that entry about spatial partitioning.</p>
 
 <h4>Sun Feb  2 11:15:42 CET 2020</h4>
 
@@ -345,7 +351,7 @@
 
 <h4>Paying And Incuring Debts - Tue Jan 14 19:44:18 CET 2020</h4>
 
-<p> My hackathon project turned out to be a grand success and turned out exactly the way I anticipated. Actually no, it surprised me how fast things have started moving and how far the cascading effects reached into areas I did not at all had foreseen in the most wonderful way. I believe my work has brought joy and promise of better future to many people, including myself. Currently I'm again resting from deeper dives into technology. I'll need to pay my debt and follow up on that hackathon migration success with similar successes for many other features in our monolith application. I've been whining all year about what I wanted. Now I got it and it's time to shut up and pay back the favour.</p>
+<p> My hackathon project turned out to be a grand success and turned out exactly the way I anticipated. Actually no, it surprised me how fast things have started moving and how far the cascading effects reached into areas I did not at all had foreseen in the most wonderful way. I believe my work has brought joy and promise of better future to many people, including myself. Currently I'm again resting from deeper dives into technology. I'll need to pay my debt and follow up on that hackathon migration success with similar successes for many other features in our monolith application. I've been whining all year about what I wanted. Now I got it and it's time to shut up and pay back the favor.</p>
 
 <p> I'm using the downtime to decompress, refocus more on my personal mental and physical wellness. "Health" would have sounded wrong here since I do consider myself quite healthy at the moment, certainly not any less healthy then an average person of my circumstances. I focused on eating less and better things, I'm shyly trying my way back to some exercising and spending more time reading Nassim Taleb and Nietzsche. I also rediscovered the amazing joy of doing something selfless. Indeed Taleb is right about the Skin In The Game. But having skin in the game for a selfless cause feels almost ubermensch-ish... It definitely let me straighten up my back, rise my head and feel like I have right to be on this planet. But again it's critical I follow this promise of selflessness through and pay the debts. Not because how others see me. Because how I see myself.</p>
 
@@ -363,15 +369,15 @@
 
 <h4>Tue Dec 10 23:31:16 CET 2019</h4>
 
-<p> I added awk pages to the blog. Right now this page is generated from multiple .md files concatonated by one <code>index.awk</code> file and all of it outputs as single <code>index.md</code>. I also added simple templating system.</p>
+<p> I added awk pages to the blog. Right now this page is generated from multiple .md files concatenated by one <code>index.awk</code> file and all of it outputs as single <code>index.md</code>. I also added simple tempting system.</p>
 
 <h4>Mon Dec  9 22:39:51 CET 2019</h4>
 
-<p> I've solve it! I have now variables working in blog tech. Apparently my problem was that xargs was treating everything as one big argument instead of few separate arguments separated -v. I think internally xargs is not calling shell but rather forks the program directly and passes arguments to it via the c interface. That would explain why the command that was generated by <code>xargs -t</code> was working correctly when manually copied and pasted into the terminal but would fail when run via xargs/make. Anyway next problem to solve in blog tech is start dynamically replace variable names from .md files into their values that were passed as arugments to awk script.</p>
+<p> I've solve it! I have now variables working in blog tech. Apparently my problem was that xargs was treating everything as one big argument instead of few separate arguments separated -v. I think internally xargs is not calling shell but rather forks the program directly and passes arguments to it via the c interface. That would explain why the command that was generated by <code>xargs -t</code> was working correctly when manually copied and pasted into the terminal but would fail when run via xargs/make. Anyway next problem to solve in blog tech is start dynamically replace variable names from .md files into their values that were passed as arguments to awk script.</p>
 
 <h4>Mon Dec  9 19:49:35 CET 2019</h4>
 
-<p> I'm a little tired of <code>make</code> and <code>awk</code> at the moment so I decided to switch projects for a while. I have the template variables feature pretty much working except that for some reason when running <code>awk</code> via <code>make</code> it errors with <code>awk: invalid -v option</code> but that same exact command when run manually by pasting it in the terminal work sperfectly fine. I've recently heard that the "health" niche is evergreen on mobile. For the last year on and off I've been working on week organiser algorithm I named GYST. I'll brush up on this project. Update all the dependencies and see if I can make some progress. Last time I stopped at having simple D3 visualisation for my genetic algorithm since I needed to understand better why doesn't my algorithm work.</p>
+<p> I'm a little tired of <code>make</code> and <code>awk</code> at the moment so I decided to switch projects for a while. I have the template variables feature pretty much working except that for some reason when running <code>awk</code> via <code>make</code> it errors with <code>awk: invalid -v option</code> but that same exact command when run manually by pasting it in the terminal work perfectly fine. I've recently heard that the "health" niche is evergreen on mobile. For the last year on and off I've been working on week organizer algorithm I named GYST. I'll brush up on this project. Update all the dependencies and see if I can make some progress. Last time I stopped at having simple D3 visualization for my genetic algorithm since I needed to understand better why doesn't my algorithm work.</p>
 
 <h4>Wed Dec  4 23:49:47 CET 2019</h4>
 
@@ -382,8 +388,8 @@
 <p> This is the first entry. I made today significant progress with my blog tech.</p>
 
 <ul>
-<li><code>make deploy</code> prepares a new <code>gh-pages</code> branch commit and pushes it to github</li>
-<li><code>awk/lib.awk</code> will be a common place for all shared awk functions</li>
+<li><code>make deploy</code> prepares a new <code>gh-pages</code> branch commit and pushes it to GitHub</li>
+<li><code>awk/lib.awk</code> will be a common place for all shared AWK functions</li>
 <li><code>make build</code> supports now parsing markdown meta variables (disabled until useful)</li>
 <li><code>make test</code> runs <code>make build</code> and automatically opens the browser. Super convenient especially when running <code>:!make test</code> in vim.</li>
 </ul>

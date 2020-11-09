@@ -1,5 +1,145 @@
 <p> <html>   <head>     <meta name="viewport" content="width=device-width, initial-scale=1.0">     <style>       * {         box-sizing: border-box;       }       body {         width: 30em;         margin: auto;         font-size: 22px;         line-height: 1.5em;         overflow-wrap: break-word;         word-wrap: break-word;         hyphens: auto;       }       @media (max-width: 704px) {         body {           padding: 0 1em;           width: 100%;         }       }       ul li { 	margin: 0.75em 0;       }       ul li:first-of-type,       ul li:last-of-type { 	margin: 0;       }     </style>     <title>Pyzozord's Blog</title>   </head>   <body></p>
 
+<h3>Mon  9 Nov 12:41:32 CET 2020</h3>
+
+<p> Mike Acton's advice on how to be a good engineer.</p>
+
+<ul>
+<li>It takes about 2 years for a company to be on net positive for a new programmer.</li>
+</ul>
+
+<p> Misconceptions:</p>
+
+<ul>
+<li>Single responsibility principle: piratically speaking is not true because there are lot's of things that are more efficient or make more sense or are the most common shared.</li>
+<li>Don't reinvent the wheel: nonsense, reinvent the wheel to learn how it works and make adjustments. The reality is that world is not once size fits all.</li>
+<li>Spend more time reading the writing code: it's not about "reading", it's about "understanding how and why it works".</li>
+<li>You don't need to recode if you plan and design first: You will never going to have all requirements up front, people are constantly learning. Make the best decisions with the knowledge you have but don't assume new knowledge won't come.</li>
+<li>Write in a way next programmer can understand it: Yes, but don't write code for idiots. You can safely assume the reader will be smart (you in the future).</li>
+<li>Abstraction is good: Engineers are working in reality and are constrained by real life limits of hardware and other requirements. </li>
+<li>Programmers shouldn't worry about memory: Memory is the most important resource in computer system. Retrieving memory is by far the slowest operation in total.</li>
+<li>The compiler is your friend: It is a tool, You are responsible for what compiler outputs. So you need to be an expert in your tool.</li>
+<li>Premature optimization is the root of all evil: Don't write optimized code but think about it ahead of time. If you don't think about optimization when it becomes a problem it is too late to fix it. You don't need to write optimized code from the start but you need to know how you will write it later.</li>
+<li>O notation: it's misleading, often O(1) maybe slower then O(n).</li>
+</ul>
+
+<p> Technical skills:</p>
+
+<ul>
+<li>Technical skills you should have: understanding how OS, CPU, (GPU), memory bus work. Experience with SIMD instructions. Being able to read and write assembly fluently. Actively researching some area of expertise.</li>
+<li>Aside of technical skills people are essentially incompetent in three essential areas: practice, reasonable defaults, problem solving. None of these are very hard.</li>
+</ul>
+
+<p> Practice: </p>
+
+<ul>
+<li>Explore gaps in your knowledge.</li>
+<li>It's ephemeral, you are not building a project or researching things.</li>
+<li>The purpose of practice is to practice and get better.</li>
+<li>It's not competitive. </li>
+<li>You should do at least 30 minutes every day.</li>
+<li>Remember to throw away the result and try again next day from scratch.</li>
+<li>For example try every day be 30 minutes writing an application. Ever day start from scratch. After 30 days you will be able to write much more in 30 minutes.</li>
+</ul>
+
+<p> Reasonable defaults: </p>
+
+<ul>
+<li>Linear search through the array is almost always the (good enough or even the best) answer. </li>
+<li>FIFO managed by incremented integer and Index Look-aside Table are two extremely common and important data structures</li>
+<li>code for that first. Don't think of objects in the vacuum, most of the time there are many of the same thing. Explicit latency and throughput: how long it takes and when should be able to issue new command. It should be explicit, written down and part of the design. Always version your serialized version. Have simple allocators: block, stack and scratch allocators. That's all you need 90% of the time. Model your target manually first (cheat): do quick and dirty prototypes, get to provable prototype by any means necessary as fast as possible. </li>
+</ul>
+
+<p> Problem solving: </p>
+
+<ul>
+<li>the most shocking and the biggest issue, and it's not a technical skill. </li>
+<li>It's "I can't reason about solving the problem".</li>
+<li>Solving problem is an iterative process. You should keep looping those things to approach solving.</li>
+<li>Steps of problem solving: 1) context, 2) value, 3) cost, 4) platform, 5) data.</li>
+<li>As we iterate we always learn new things, write it down.As we learn new information during the process</li>
+</ul>
+
+<p> Problem solving Step 1: Context</p>
+
+<ul>
+<li>It's all things that can be assumed to be known. The more context you have the better you can solve the problem. </li>
+<li>Programmers fall into making things too generic and basically invent a compiler so they can avoid solving the actual problem. That only adds a new problem. </li>
+<li>It is easier to solve problems with context then in generic space. </li>
+<li>Different problems require different solutions. Don't fit solutions into problems. Don't ask which one of the design patterns works here. "find" solution to a problem, don't "fit" solution to a problem. If something fundamental changes about the problem, then it's a different problem and the solution is different.</li>
+<li>Identify what the user needs are. You can watch your users work, what data they are transforming (using).</li>
+<li>Describe concrete goals in plain language. You are not writing generic features, you are writing solutions for real problems of real humans.</li>
+<li>Identify and balance constraints. Find out the actual constraint. For example when working is it OK if you take 5 min to finish it? And 5 years? Where is the limit then? Same with software size, speed etc.</li>
+<li>Iteration. How long can this take to still be useful. Maybe not articulated, is something acceptable in 2 minutes? And 2 years? Then where is the line exactly?</li>
+<li>Learning. Research problem is not a production problem. They should be treated separately.</li>
+<li>Write down the constraints/limits.</li>
+<li>Nothing is perfectly correct. We accept certain amount of incorrectness. What is the level of accessibility. How many find-able bugs are acceptable.</li>
+</ul>
+
+<p> Context traps</p>
+
+<ul>
+<li>The what-if game. If we are actually trying to cover that case then lets stop and make design decision about that. If we don't know if that is the case, then what are the chances that is the case. Make decisions based on the imperfect knowledge (e.g. 20% chance some case needs to be cover). Never create a thing that does all the things all the time. If people play what-if game ask practical questions: "do you have concrete example?", "how common would it be?", "can you test for it?", "how much experience do you have with the problem, or are you just making the stuff up?". Solving problems you don't have creates problems you do have.</li>
+<li>Future proofing is fools' errand. Things change quickly. Every two decades things change radically. Find the lifetime of your project. Ask yourself if you feel comfortable delete it after lifespan? If you don't feel comfortable, maybe you should extend the lifespan. The future is unknowable. </li>
+<li>You (engineer who researches and practices) will be much better in 5 years, so solve the problem with knowledge you have and accept that you will solve next problem better.</li>
+<li>People are creative and will find a way to work with constraints. Often the constraints will actually they can actually use the constraint of the system.</li>
+<li>Do not conceptually oversimplify a problem. You can't make problem simpler then it is. There are real variables that can't just abstract away. Abstractions are not leaky, this is how reality works.</li>
+<li>If people are hacking in your system, the problem is your system not the hacks. You were trying to over-abstract or oversimplify or problem has changed over time.</li>
+<li>Spend the time to examine and analyze the data. Where is it coming from, what is the entire workflow, like build time and run time. Entire workflow all the way back to the source.</li>
+<li>You can't oversimplify a problem and do it in a bubble. Things have dependencies. Understand those dependencies.</li>
+<li>Do not ignore the You have hard and complicated problems. Try to organize and manage the data but do not ignore the data, do not oversimplify. If you ignore problems you just make it more complicated.</li>
+<li>Do not over-complicate problems. Often programmers overgeneralize and effectively try to create a compiler without context. You should solve problems with as much context as possible.</li>
+<li>Do not create "stories" solve problems at hand. Stories require extra consistency for the sake of the story itself.</li>
+<li>Your job as engineer is to actually solve the actual problem, do not use generic as excuse to not understanding and using the context.</li>
+</ul>
+
+<p> Problem solving Step 2: Value</p>
+
+<ul>
+<li>Identify the value, in real life terms, Is it worth 2 weeks of my time to solve it. Is it worth 10 years? Where is the exact limit? </li>
+<li>When you know how much time you have to solve the problem you can make decisions to fit in that time. </li>
+<li>Organize your time.</li>
+<li>Breaking down business case for the feature. Why are we doing the feature.</li>
+<li>Selling feature to your lead or team and getting everybody on board is massive part of the job of professional programmer.</li>
+<li>Articulate targets, how much iteration time are we saving, how much one man-month is worth. What are you treading off. What is the cost.</li>
+</ul>
+
+<p> Problem solving Step 3: Cost</p>
+
+<ul>
+<li>Predicted development time is generally wrong. Can correct only for things that you have already done. But if you work from a time limit you can engineer a solution that fits in that limit. You start with Plan B to have something working if everything else fails.</li>
+<li>What is the opportunity cost. Any time you spend means it's time that is not time spend somewhere else. Need to be aware of that.</li>
+<li>Maintenance cost is real time that all developers pay. How can you minimize it or eliminate it.</li>
+<li>If you can reason about maintenance cost you spend resources you don't have. You will spend time fixing buys you haven't accounted for. </li>
+<li>Sources of maintenance: maintain understanding of data changing over time, changing requirements, constraints/limits changed, untested data transformations, unexpected use-cases, dependency changes, bad inputs, usage training, infrastructure/platform changes, any change whatsoever. If you make any change to the system, there is high chance another bug will appear. You stop bugs incoming to the system when you stop working on the system.</li>
+<li>Build vs Buy. How well can reason about value vs cost. Stop with the "feelings" and start with the "reason" (so use actual data information). Write it down, apply process.</li>
+<li>Reality is not a hack you need to deal with to solve your abstract, theoretical problem. Reality is the actual problem.</li>
+</ul>
+
+<p> Problem solving Step 4: Platform</p>
+
+<ul>
+<li>No such thing as "platform independent"</li>
+<li>RTFM especially x64 and arm. Also nvidia, ati, opengl, opengl es, vulkan, directx 11, windows, linux.</li>
+<li>You can't abstract these things away but you can organize commonalities.</li>
+<li>You can't abstract fact that resources are shared. It is a reality you must deal with. Especially caches, RAM, HDD, BDD, network.</li>
+<li>Know your tools, you are responsible for the output of your tools. Do you understand how it works, can you change how it works and what it outputs. Any tool that gets in a way of you from understanding how it works is a bad tool.</li>
+</ul>
+
+<p> Problem solving Step 5: Data</p>
+
+<ul>
+<li>Everything is data problem.</li>
+<li>All programs just transform data. If you don't understand data you don't understand the problem and you can't design right solution. </li>
+<li>What are the data limits, what is the count, range, what is likelihood of appearing over time statistically, how is it going to be organized statistically.</li>
+<li>Gather your data to understand it.</li>
+<li>Sample input and output data over time. You can analyze it offline</li>
+<li>Visualize your data in as many ways as you can. 3D graphs, excel, transform data in a script.</li>
+<li>Know what was read and written over time. What access patterns look like over time statistically. When data is accessed statistically relative to other data. What values are most common. What are the outliers. What ranges are common. What causes branches and how likely is it statistically.</li>
+<li>You have inside and outside of your program. You should have both. You should have ephemeral tools that live to just look at specific data. There are no good generic tools to analyze data.</li>
+<li>Remove unnecessary work. Stop doing the stupid things that have no reason. Only solve the problem at hand.</li>
+</ul>
+
 <h3>Mon  9 Nov 11:11:19 CET 2020</h3>
 
 <p> Mike Acton's advice on how to be a professional programmer. Unsurprisingly there is a lot of overlap with the advice from the Passionate Programmer by Chad Fowler which I find reassuring, since I wasn't 100% convinced to the Chad's book.</p>

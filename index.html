@@ -1,5 +1,11 @@
 <p> <html>   <head>     <meta name="viewport" content="width=device-width, initial-scale=1.0">     <style>       * {         box-sizing: border-box;       }       body {         width: 30em;         margin: auto;         font-size: 22px;         line-height: 1.5em;         overflow-wrap: break-word;         word-wrap: break-word;         hyphens: auto;       }       @media (max-width: 704px) {         body {           padding: 0 1em;           width: 100%;         }       }       ul li { 	margin: 0.75em 0;       }       ul li:first-of-type,       ul li:last-of-type { 	margin: 0;       }     </style>     <title>Pyzozord's Blog</title>   </head>   <body></p>
 
+<h3>di 19 jan 2021 22:48:56 CET</h3>
+
+<p> Finally some progress with VIP. Not as much as I would like but finally something noteworthy. I just finished adding new option "spacetabs". It works similarly to "expandtab" in vim. No more using external formatter before every commit at work!</p>
+
+<p> Next feature will be readline in the : command mode. File and history completion, here I come!</p>
+
 <h3>Sat 12 Dec 10:48:49 CET 2020</h3>
 
 <p> Not sure what to write about. I've been busy at work lately. I'm also learning TeX and maybe I'll start learning LaTeX but I doubt it, TeX is probably more then enough for me to express mathematical formulas. I've started looking into readline, I want to add readline to my editor VIP. That will take some time, I need to read some readline and ncurses documentation, then figure out how ncurses is set up in the VIP code, and then make them all make friends. It's going to be worth it though, auto completion and line editing inside the vi's : command will make life much easier. I've been also thinking about "reverse count" motions for example "change since second last ) until the end of the line" would be "c-2t)", the minus is the culprit. </p>
